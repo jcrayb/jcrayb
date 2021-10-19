@@ -1,13 +1,16 @@
 body{
 	
-	background-color: darkgray;
+	background-color: white;
 
 }
 
-h1{
-	color:#00AAFF;
+header{
+	background-color:green;
+	height: 100%;
+	width: 100%;
 }
 
-p{
-	color: blueviolet;
+.par1{
+	background-color: black;
+	color: white;
 }
