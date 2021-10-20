@@ -1,16 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Festive&family=Rampart+One&display=swap');
+
+
+
 body{
 	
 	background-color: white;
+	margin: 0;
 
 }
 
-header{
-	background-color:green;
+/*link properties*/
+a:link{
+	text-decoration: none;
+}
+
+a:visited{
+	text-decoration:none;
+}
+
+a:hover{
+	font-weight: bold;
+}
+/*link properties*/
+
+#main-header{
+	background-color: white;
+	box-shadow: 0px 5px 26px 5px gray;
 	height: 100%;
 	width: 100%;
+}
+
+#main-header h1{
+	color: black;
+	font-size: 2em;
+	font-family:Rampart One;
+	margin: auto;
+	position:absolute;
+	text-align: center;
+	width: 100%;
+	
+}
+
+#main-header h5{
+	color: black;
+	font-size: .75em;
+	margin: auto;
+	position:absolute;
+	top: 50px;
+	text-align: center;
+	width: 100%;
+	
+}
+
+#main-navbar li{
+	font-family: rampart one;
+	position: relative;
+	top:20%;
+	display: inline;
+	margin-right: 10%;
+}
+
+#main-navbar a{
+	color: black;
+}
+
+
+#logo img{
+	display:block;
+	width: 100px;
 }
 
 .par1{
 	background-color: black;
 	color: white;
+}
+
+#logo{
+	display: block;
+	position: relative;
+	left: 20px;
+	padding: auto;
+	box-shadow: 0px 5px 26px 5px gray;
+  	border-radius: 4px;
+ 	width: 100px;
 }
