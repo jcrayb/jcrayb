@@ -53,6 +53,8 @@ a:hover{
 }
 
 #main-navbar li{
+	border-style: solid;
+	padding: 5px;
 	font-family: rampart one;
 	position: relative;
 	top:20%;
@@ -73,6 +75,13 @@ a:hover{
 .par1{
 	background-color: black;
 	color: white;
+}
+
+#mailing-list label{
+	margin-left: 5%;
+	border-style: solid;
+	box-sizing: border-box;
+	height: 500px;
 }
 
 #logo{
