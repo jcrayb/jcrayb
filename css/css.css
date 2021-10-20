@@ -25,41 +25,49 @@ a:hover{
 
 #main-header{
 	background-color: white;
+	margin-top: 0px;
+	padding: 10px;
+	border-style: white solid;
 	box-shadow: 0px 5px 26px 5px gray;
-	height: 100%;
+	height: 120px;
 	width: 100%;
 }
 
 #main-header h1{
-	color: black;
 	font-size: 2em;
 	font-family:Rampart One;
 	margin: auto;
-	position:absolute;
+	position:relative;
 	text-align: center;
 	width: 100%;
-	
 }
 
 #main-header h5{
 	color: black;
 	font-size: .75em;
 	margin: auto;
-	position:absolute;
-	top: 50px;
+	position:relative;
+	top: 10px;
 	text-align: center;
 	width: 100%;
 	
 }
 
+
+#main-navbar ul{
+	position: absolute;
+	top: 80px;
+}
+
 #main-navbar li{
 	border-style: solid;
-	padding: 5px;
+	padding: 3px;
 	font-family: rampart one;
 	position: relative;
-	top:20%;
-	display: inline;
-	margin-right: 10%;
+	top:10px;
+	left: 5px;
+	display:inline;
+	margin:auto;
 }
 
 #main-navbar a{
