@@ -165,7 +165,7 @@ a:hover{
 	text-align:center;
 }
 
-@media (max-width: 1100px){
+@media (max-width: 1000px){
 	#pthird{
 		grid-template-columns: 1fr;
 		margin:auto;
