@@ -169,8 +169,7 @@ a:hover{
 	#pthird{
 		grid-template-columns: 1fr;
 		margin:auto;
-		min-width:300px;
-		max-width:350px
+		width:70%;
 	}
 	
 	.container{
