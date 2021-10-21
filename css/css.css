@@ -43,7 +43,7 @@ a:hover{
 #main-header h1{
 	margin: auto;
 	float: left;
-	font-size: max(1.5em, 12px);
+	font-size: max(2em, 12px);
 	min-width: 100px;
 }
 
@@ -55,13 +55,6 @@ a:hover{
 	color:black;
 }
 
-#main-header h5{
-	margin:auto;
-	color: black;
-	font-size: .75em;
-	float:left;
-	
-}
 
 #main-navbar{
 	position: sticky;
@@ -157,26 +150,30 @@ a:hover{
 
 /*Slideshow*/
 
-.pthird{
+#pthird{
 	display:grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 5px;
 }
 
-.pthird > div{
+#pthird > div{
 	border: 1px solid black;
 	border-sizing: border-box;
 }
 
-.pthird h3{
+#pthird h3{
 	text-align:center;
 }
 
 @media (max-width: 1000px){
-	.pthird{
+	#pthird{
 		grid-template-columns: 1fr;
 		margin:auto;
 		min-width:300px;
-		max-width:450px
+		max-width:350px
+	}
+	
+	.container{
+		width:92%;
 	}
 }
