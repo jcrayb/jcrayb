@@ -12,7 +12,6 @@ body{
 .container{
 	width:80%;
 	margin: auto;
-	overflow: hidden;
 }
 
 /*link properties*/
@@ -37,15 +36,15 @@ a:hover{
 	padding: 10px;
 	border-style: white solid;
 	box-shadow: 0px 5px 26px 5px gray;
-	height: auto;
+	height: 75px;
 	width: 100%;
 }
 
 #main-header h1{
 	margin: auto;
 	float: left;
-	font-size: 3em;
-	font-family:arial;
+	font-size: max(1.5em, 12px);
+	min-width: 100px;
 }
 
 #main-header a:hover{
@@ -65,6 +64,8 @@ a:hover{
 }
 
 #main-navbar{
+	position: sticky;
+	top: 10px;
 	margin:auto;
 	float:right;
 }
@@ -153,4 +154,29 @@ a:hover{
 		left: -400%;
 	}
 }
+
 /*Slideshow*/
+
+.pthird{
+	display:grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 5px;
+}
+
+.pthird > div{
+	border: 1px solid black;
+	border-sizing: border-box;
+}
+
+.pthird h3{
+	text-align:center;
+}
+
+@media (max-width: 1000px){
+	.pthird{
+		grid-template-columns: 1fr;
+		margin:auto;
+		min-width:300px;
+		max-width:450px
+	}
+}
