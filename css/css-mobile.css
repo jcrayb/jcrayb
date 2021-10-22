@@ -26,6 +26,14 @@ a:visited{
 a:hover{
 	font-weight: bold;
 }
+
+span {
+    	display: inline;
+  	}
+span:before {
+    	content: "\a ";
+    	white-space: pre;
+}
 /*link properties*/
 /*global stuff*/
 
@@ -36,7 +44,7 @@ a:hover{
 	padding: 10px;
 	border-style: white solid;
 	box-shadow: 0px 5px 26px 5px gray;
-	height: 75px;
+	height: 5em;
 	width: 100%;
 }
 

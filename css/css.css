@@ -36,15 +36,13 @@ a:hover{
 	padding: 10px;
 	border-style: white solid;
 	box-shadow: 0px 5px 26px 5px gray;
-	height: 75px;
+	height:75px;
 	width: 100%;
 }
 
 #main-header h1{
 	margin: auto;
-	float: left;
 	font-size: max(2em, 12px);
-	min-width: 100px;
 }
 
 #main-header a:hover{
@@ -54,7 +52,6 @@ a:hover{
 #main-header a:visited{
 	color:black;
 }
-
 
 #main-navbar{
 	position: sticky;
