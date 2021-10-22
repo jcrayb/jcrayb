@@ -11,11 +11,12 @@
 
 <body>
 <script>
+	var x =1;
 	let details = navigator.userAgent;
 	let regexp = /android|iphone|kindle|ipad/i;
 	let isMobileDevice = regexp.test(details);
 	if (isMobileDevice){
-		 theme.setAttribute("href", "css/css-mobile.css")
+		theme.setAttribute("href", "css/css-mobile.css")
 	} else {
 		theme.setAttribute("href", "css/css.css")
 	}
@@ -49,12 +50,6 @@
 		</p>
 	</div>	
 	
-	<div id="social">
-		<div id="instagram">
-			<a href="https://instagram.com/boostedbeings"><img src= "images/a2.jpg" alt="A link to our instagram"></a>
-		</div>
-	</div>
-	
 	<div class="container">
 		<div id = "slideshow">
 			<figure>
@@ -66,17 +61,23 @@
 			</figure>
 		</div>	
 	</div>
+	
+	<br>
+	
 	<div class="container">
 		<div id="pthird">
 			<div>
+				<img src="images/html.png" alt="HTML5 logo">
 				<h3>Paragraph 1</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut libero nobis inventore! Explicabo inventore quae consequatur doloribus iure sequi suscipit necessitatibus a reprehenderit asperiores modi atque beatae, sed, eaque repudiandae!</p>
 			</div>
 			<div>
+				<img src="images/css.png" alt="CSS3 logo">
 				<h3>Paragraph 2</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo enim repellat quia, sequi placeat deserunt id necessitatibus, libero earum, facere, deleniti fuga ipsa! Totam quis, cupiditate, laborum dolor tempore ratione.</p>
 			</div>
 			<div>
+				<img src="images/JS.png" alt="Javascript logo">
 				<h3>Paragraph 3</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem assumenda, praesentium ullam, tempora qui vero fuga, amet quas laborum tempore voluptates nostrum ea commodi ut ex inventore sint, repellendus numquam.</p>
 			</div>

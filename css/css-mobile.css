@@ -151,7 +151,6 @@ a:hover{
 /*Slideshow*/
 
 #pthird{
-	width: 90%;
 	margin: auto;
 	display:grid;
 	grid-template-columns: 1fr;
@@ -160,10 +159,22 @@ a:hover{
 }
 
 #pthird > div{
+	margin: auto;
+	width: 80%;
 	border: 1px solid black;
 	border-sizing: border-box;
 }
 
 #pthird h3{
 	text-align:center;
+}
+
+#pthird p{
+	text-align: justify;
+}
+
+#pthird img{
+	display: block;
+	margin:auto;
+	width: 70%;
 }

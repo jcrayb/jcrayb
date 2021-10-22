@@ -154,16 +154,23 @@ a:hover{
 	display:grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 5px;
+	grid-row-gap:5px;
 }
 
 #pthird > div{
-	margin:auto;
+	margin-x:auto;
 	border: 1px solid black;
 	border-sizing: border-box;
 }
 
 #pthird h3{
 	text-align:center;
+}
+
+#pthird img{
+	display:block;
+	margin: auto;
+	max-width: 200px;
 }
 
 @media (max-width : 1000px ){
