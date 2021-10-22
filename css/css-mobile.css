@@ -44,14 +44,14 @@ span:before {
 	padding: 10px;
 	border-style: white solid;
 	box-shadow: 0px 5px 26px 5px gray;
-	height: 10em;
+	height: 12em;
 	width: 100%;
 }
 
 #main-header h1{
 	margin: auto;
 	float: left;
-	font-size: max(4em, 12px);
+	font-size: max(4.5em, 12px);
 	min-width: 100px;
 }
 
@@ -78,7 +78,7 @@ span:before {
 	color: black;
 	border-style: solid;
 	padding: 3px;
-	font-size: 1.5em;
+	font-size: 3em;
 	font-family: rampart one;
 	margin-bottom: .2em;
 }
