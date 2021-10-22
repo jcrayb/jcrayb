@@ -65,10 +65,13 @@ span:before {
 
 
 #main-navbar{
-	position: sticky;
 	top: 10px;
 	margin:auto;
 	float:right;
+}
+
+#main-navbar ul{
+	list-style-type: none;
 }
 
 #main-navbar li{
@@ -77,6 +80,7 @@ span:before {
 	padding: 3px;
 	font-size: 1.5em;
 	font-family: rampart one;
+	margin-bottom: .2em;
 }
 
 #main-navbar a:visited{
