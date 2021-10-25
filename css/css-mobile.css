@@ -47,9 +47,9 @@ header{
 
 #dbtn{
 	background: white;
-	height: 50px;
+	height: auto;
 	font-family: rampart one;
-	font-size: 16pt;
+	font-size: 36pt;
 }
 
 #dropdown{
@@ -85,7 +85,7 @@ nav{
 }
 
 nav a{
-	font-size: 16pt;
+	font-size: 36pt;
 	font-family: rampart one;
 	padding: 3px;
 }
