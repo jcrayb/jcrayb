@@ -8,6 +8,10 @@ body{
 
 }
 
+p{
+	font-size: 2em;
+}
+
 .container{
 	width:92%;
 	margin: auto;
@@ -49,7 +53,7 @@ header{
 	background: white;
 	height: auto;
 	font-family: rampart one;
-	font-size: 36pt;
+	font-size: 3em;
 }
 
 #dropdown{
@@ -85,7 +89,7 @@ nav{
 }
 
 nav a{
-	font-size: 36pt;
+	font-size: 3em;
 	font-family: rampart one;
 	padding: 3px;
 }
@@ -174,6 +178,7 @@ nav a{
 }
 
 #pthird > div{
+	padding: .5em;
 	margin: auto;
 	width: 80%;
 	border: 1px solid black;
@@ -181,6 +186,7 @@ nav a{
 }
 
 #pthird h3{
+	font-size: 3em;
 	text-align:center;
 }
 
