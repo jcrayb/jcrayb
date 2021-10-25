@@ -176,11 +176,12 @@ nav a{
 
 @media (max-width : 925px ){
 	header{
-		height: 120px;
+		height: auto;
 	}
 	
 	header{
 		grid-template-columns: 1fr;
+		grid-row-gap: 10px;
 	}
 	
 	header img{
@@ -190,8 +191,16 @@ nav a{
 		float: center;
 	}
 	
-	header nav{
-		grid-template-columns: 1fr 1fr 1fr;
+	#dropdown{
+		position: relative;
+		margin: auto;
+	}
+	
+	#main-navbar{
+		display: block;
+		float: center;
+		margin: auto;
+		grid-template-columns: 1fr 1fr 1fr;	
 	}
 	
 	.container{
