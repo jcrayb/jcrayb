@@ -20,6 +20,7 @@ a:link{
 
 a:visited{
 	text-decoration:none;
+		color: black;
 }
 
 a:hover{
@@ -30,6 +31,7 @@ a:hover{
 
 /*Main header stuff*/
 header{
+	font-family: rampart one;
 	display: grid;
 	grid-template-columns: 1fr;
 	z-index: 100;
@@ -43,10 +45,26 @@ header{
 	height:auto;
 }
 
+#dbtn{
+	background: white;
+	height: 50px;
+	font-family: rampart one;
+	font-size: 16pt;
+}
+
+#dropdown{
+	width: 100%;
+	height: auto;
+	display:none;
+	background: white;
+	position: relative;
+	box-shadow: 0px 5px 26px 5px gray;	
+}
+
 header img{
 	display:block;
 	margin: auto;
-	width: 90%;	
+	width: 90%;
 }
 
 header a:hover{
@@ -58,19 +76,19 @@ header a:visited{
 }
 
 nav{
-	height: max(1em, 30px);
+	margin: auto;
+	width: 100%;
+	height: auto;
 	display: grid;
 	text-align: center;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 1fr;
 	grid-column-gap: 15px;
-	grid-row-gap: 5px;
 }
 
 nav a{
+	font-size: 16pt;
 	font-family: rampart one;
-	background:  #D9D9D9;
 	padding: 3px;
-	border: 2px solid black;
 }
 /*Main header stuff*/
 

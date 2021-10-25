@@ -30,6 +30,11 @@ a:hover{
 /*global stuff*/
 
 /*Main header stuff*/
+#dbtn{
+	background: blue;
+	display: none;
+}
+
 header{
 	display: grid;
 	grid-template-columns: 70% 30%;
@@ -46,7 +51,7 @@ header{
 
 header img{
 	display:block;
-	margin: auto;
+	margin-left: 10%;
 	height:75px;
 	align-content: left;	
 }
@@ -154,6 +159,8 @@ nav a{
 	margin-x:auto;
 	border: 1px solid black;
 	border-sizing: border-box;
+	text-align: justify;
+	padding: 3px;	
 }
 
 #pthird h3{
@@ -166,21 +173,7 @@ nav a{
 	max-width: 200px;
 }
 
-@media (max-width : 1000px ){
-	#pthird{
-		grid-template-columns: 1fr;
-		grid-row-gap: 7px;
-		margin:auto;
-		min-width: 250px;
-		width:35%;
-	}
-	
-	.container{
-		width:92%;
-	}
-}
-
-@media (max-width : 790px ){
+@media (max-width : 925px ){
 	header{
 		height: 120px;
 	}
@@ -204,4 +197,11 @@ nav a{
 		width:92%;
 	}
 	
+	#pthird{
+		grid-template-columns: 1fr;
+		grid-row-gap: 7px;
+		margin:auto;
+		min-width: 275px;
+		width:35%;
+	}
 }

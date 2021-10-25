@@ -5,7 +5,6 @@
 <title>Boosted Beings</title>
 
 <link rel="shortcut icon" href="images/favicon.ico">
-<script type="text/javascript" src="script/js.js"></script>
 <link id="theme" rel="stylesheet" type="text/css" href="css/css.css">
 </head>
 	
@@ -16,22 +15,25 @@
 	let details = navigator.userAgent;
 	let regexp = /android|iphone|kindle|ipad/i;
 	let isMobileDevice = regexp.test(details);
-	if (isMobileDevice){
+	if (x==1){
 		theme.setAttribute("href", "css/css-mobile.css")
 	} else {
 		theme.setAttribute("href", "css/css.css")
 	}
 </script>
 	
-	<header>
+	<header id="mheader">
 		<img src="images/LOGO TEXT.png" alt="logo">
-		<nav id =  "main-navbar">
-			<a href="index.html">Home</a>
-			<a href="about.html">About</a>
-			<a href="index.html">Hello</a>
-		</nav>
+		<button id="dbtn">Menu</button>
 	</header>
-		
+		<div id="dropdown">
+			<nav id =  "main-navbar">
+				<a href="index.html">Home</a>
+				<a href="about.html">About</a>
+				<a href="index.html">Hello</a>
+			</nav>
+		</div>
+	
 	<div class="container">
 		<div class="par1">
 			<p>
@@ -85,4 +87,6 @@
 	<br>
 	<br>
 </body>
+
+<script type="text/javascript" src="script/js.js"></script>
 </html>
