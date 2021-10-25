@@ -3,7 +3,6 @@
 
 /*global stuff*/
 body{
-	overflow-x: hidden;
 	background-color: white;
 	margin: 0;
 
@@ -12,6 +11,7 @@ body{
 .container{
 	width:80%;
 	margin: auto;
+	overflow-x: hidden;
 }
 
 /*link properties*/
@@ -30,60 +30,50 @@ a:hover{
 /*global stuff*/
 
 /*Main header stuff*/
-#main-header{
+header{
+	display: grid;
+	grid-template-columns: 70% 30%;
+	z-index: 100;
+	position:sticky;
+	top:0px;
 	background-color: white;
 	margin-top: 0px;
 	padding: 10px;
 	border-style: white solid;
 	box-shadow: 0px 5px 26px 5px gray;
-	height:75px;
-	width: 100%;
+	height:90px;
 }
 
-#main-header h1{
+header img{
+	display:block;
 	margin: auto;
-	font-size: max(2em, 12px);
+	height:75px;
+	align-content: left;	
 }
 
-#main-header a:hover{
+header a:hover{
 	font-weight:bold;
 }
 
-#main-header a:visited{
+header a:visited{
 	color:black;
 }
 
-#main-navbar{
-	position: sticky;
-	top: 10px;
-	margin:auto;
-	float:right;
+nav{
+	margin: auto;
+	display: grid;
+	text-align: center;
+	grid-template-columns: 1fr;
+	grid-column-gap: 5px;
+	grid-row-gap: 5px;
 }
 
-#main-navbar li{
-	color: black;
-	border-style: solid;
+nav a{
 	padding: 3px;
-	font-family: rampart one;
-	display:inline;
+	border: 2px solid black;
 }
 
-#main-navbar a:visited{
-	color:black;
-}
 /*Main header stuff*/
-
-#social img{
-	position: fixed;
-	display: block;
-	border-style: solid;
-	border-width: 0px;
-	border-color: black;
-	border-radius: 50%;
-	width: 0%;
-	min-width: 70px;
-	height: 0%;
-}
 
 .par1{
 	background-color: black;
@@ -98,6 +88,12 @@ a:hover{
 }
 
 /*Slideshow*/
+
+#sl-container{
+	width:80%;
+	margin: auto;
+}
+
 #slideshow{
 	overflow: hidden;
 }
@@ -182,4 +178,30 @@ a:hover{
 	.container{
 		width:92%;
 	}
+}
+
+@media (max-width : 790px ){
+	header{
+		height: 120px;
+	}
+	
+	header{
+		grid-template-columns: 1fr;
+	}
+	
+	header img{
+		display:block;
+		margin: auto;
+		height:75px;
+		float: center;
+	}
+	
+	header nav{
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+	
+	.container{
+		width:92%;
+	}
+	
 }

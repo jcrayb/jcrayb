@@ -3,7 +3,6 @@
 
 /*global stuff*/
 body{
-	overflow-x: hidden;
 	background-color: white;
 	margin: 0;
 
@@ -26,65 +25,52 @@ a:visited{
 a:hover{
 	font-weight: bold;
 }
-
-span {
-    	display: inline;
-  	}
-span:before {
-    	content: "\a ";
-    	white-space: pre;
-}
 /*link properties*/
 /*global stuff*/
 
 /*Main header stuff*/
-#main-header{
+header{
+	display: grid;
+	grid-template-columns: 1fr;
+	z-index: 100;
+	position:sticky;
+	top:0px;
 	background-color: white;
 	margin-top: 0px;
 	padding: 10px;
 	border-style: white solid;
 	box-shadow: 0px 5px 26px 5px gray;
-	height: 12em;
-	width: 100%;
+	height:auto;
 }
 
-#main-header h1{
+header img{
+	display:block;
 	margin: auto;
-	float: left;
-	font-size: max(4.5em, 12px);
-	min-width: 100px;
+	width: 90%;	
 }
 
-#main-header a:hover{
+header a:hover{
 	font-weight:bold;
 }
 
-#main-header a:visited{
+header a:visited{
 	color:black;
 }
 
-
-#main-navbar{
-	top: 10px;
-	margin:auto;
-	float:right;
+nav{
+	height: max(1em, 30px);
+	display: grid;
+	text-align: center;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 15px;
+	grid-row-gap: 5px;
 }
 
-#main-navbar ul{
-	list-style-type: none;
-}
-
-#main-navbar li{
-	color: black;
-	border-style: solid;
-	padding: 3px;
-	font-size: 3em;
+nav a{
 	font-family: rampart one;
-	margin-bottom: .2em;
-}
-
-#main-navbar a:visited{
-	color:black;
+	background:  #D9D9D9;
+	padding: 3px;
+	border: 2px solid black;
 }
 /*Main header stuff*/
 
