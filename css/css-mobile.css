@@ -57,7 +57,7 @@ header{
 	background: white;
 	height: auto;
 	font-family: rampart one;
-	font-size: 3em;
+	font-size: 3.5em;
 }
 
 #dropdown{
@@ -75,7 +75,7 @@ header span{
 header h1{
 	color: #00c6ff;
 	font-family: 'nevis Bold';
-	font-size: 5em;
+	font-size: 8em;
 	margin: auto;
 	display:block;
 	text-align: center;

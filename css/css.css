@@ -1,4 +1,9 @@
-
+@font-face {
+    font-family: 'nevis Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('nevis Bold'), url('../fonts/nevis.woff') format('woff');
+}
 
 
 /*global stuff*/
@@ -55,7 +60,7 @@ header span{
 
 header h1{
 	color: #00c6ff;
-	font-family: 'nevis-bold';
+	font-family: 'nevis Bold';
 	display:block;
 	margin: auto;
 	margin-left: 10%;
