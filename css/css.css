@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Festive&family=Rampart+One&display=swap');
+
 
 
 /*global stuff*/
@@ -49,6 +49,10 @@ header{
 	height:95px;
 }
 
+header span{
+	 color: #000;
+}
+
 header h1{
 	color: #00c6ff;
 	font-family: 'nevis-bold';
@@ -69,7 +73,6 @@ header a:visited{
 
 nav{
 	position: relative;
-	top: -7px;
 	font-family: 'nevis-bold', sans-serif;
 	width: 100%;
 	float: right;

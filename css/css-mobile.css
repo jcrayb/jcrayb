@@ -1,5 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Festive&family=Rampart+One&display=swap');
-
+@font-face {
+    font-family: 'nevis Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('nevis Bold'), url('../fonts/nevis.woff') format('woff');
+}
 
 /*global stuff*/
 body{
@@ -64,10 +68,17 @@ header{
 	position: relative;
 }
 
-header img{
-	display:block;
+header span{
+	 color: #000;
+}
+
+header h1{
+	color: #00c6ff;
+	font-family: 'nevis Bold';
+	font-size: 5em;
 	margin: auto;
-	width: 95%;
+	display:block;
+	text-align: center;
 }
 
 header a:hover{
@@ -94,18 +105,6 @@ nav a{
 	padding: 3px;
 }
 /*Main header stuff*/
-
-#social img{
-	position: fixed;
-	display: block;
-	border-style: solid;
-	border-width: 0px;
-	border-color: black;
-	border-radius: 50%;
-	width: 0%;
-	min-width: 70px;
-	height: 0%;
-}
 
 .par1{
 	background-color: black;
