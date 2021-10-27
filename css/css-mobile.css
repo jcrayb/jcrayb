@@ -39,7 +39,7 @@ a:hover{
 
 /*Main header stuff*/
 header{
-	font-family: rampart one;
+	font-family: 'nevis Bold';
 	display: grid;
 	grid-template-columns: 1fr;
 	z-index: 100;
@@ -54,9 +54,9 @@ header{
 }
 
 #dbtn{
+	font-family: 'nevis Bold';
 	background: white;
 	height: auto;
-	font-family: rampart one;
 	font-size: 3.5em;
 }
 
@@ -101,7 +101,6 @@ nav{
 
 nav a{
 	font-size: 3em;
-	font-family: rampart one;
 	padding: 3px;
 }
 /*Main header stuff*/
