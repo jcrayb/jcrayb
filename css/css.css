@@ -49,10 +49,13 @@ header{
 	height:95px;
 }
 
-header img{
+header h1{
+	color: #00c6ff;
+	font-family: 'nevis-bold';
 	display:block;
+	margin: auto;
 	margin-left: 10%;
-	height:75px;
+	font-size: 4em;
 	align-content: left;	
 }
 
@@ -67,7 +70,7 @@ header a:visited{
 nav{
 	position: relative;
 	top: -7px;
-	font-family: rampart one;
+	font-family: 'nevis-bold', sans-serif;
 	width: 100%;
 	float: right;
 	margin: auto;
@@ -188,7 +191,7 @@ nav a{
 		grid-row-gap: 10px;
 	}
 	
-	header img{
+	header h1{
 		display:block;
 		margin: auto;
 		height:75px;
