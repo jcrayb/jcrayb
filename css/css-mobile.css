@@ -13,10 +13,6 @@ body{
 
 }
 
-p{
-	font-size: 2em;
-}
-
 .container{
 	width:92%;
 	margin: auto;
@@ -76,7 +72,7 @@ header span{
 header h1{
 	color: #00c6ff;
 	font-family: 'nevis Bold';
-	font-size: 8em;
+	font-size: 13vw;
 	margin: auto;
 	display:block;
 	text-align: center;
@@ -191,4 +187,8 @@ nav a{
 #phalf h3{
 	text-align:center;
 	font-size: 2em;
+}
+#phalf p{
+	text-align:justify;
+	font-size: 1em;
 }
