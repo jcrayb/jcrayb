@@ -7,6 +7,8 @@
 <meta name="author" content="Jean-Christophe Raymond-Bertrand">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Boosted Beings</title>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <link rel="shortcut icon" href="images/favicon.ico">
 <link id="theme" rel="stylesheet" type="text/css" href="css/css.css">
 </head>
@@ -18,7 +20,7 @@
 	let details = navigator.userAgent;
 	let regexp = /android|iphone|kindle|ipad/i;
 	let isMobileDevice = regexp.test(details);
-	if (isMobileDevice	){
+	if (isMobileDevice){
 		theme.setAttribute("href", "css/css-mobile.css")
 	} else {
 		theme.setAttribute("href", "css/css.css")
@@ -68,24 +70,26 @@
 	</div>
 	
 	<br>
-	
+		
 	<div class="container">
-		<div id="pthird">
-			<div>
-				<img src="images/HTML.png" alt="HTML5 logo">
-				<h3>Paragraph 1</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut libero nobis inventore! Explicabo inventore quae consequatur doloribus iure sequi suscipit necessitatibus a reprehenderit asperiores modi atque beatae, sed, eaque repudiandae!</p>
+		<div id="phalf">
+			<div data-aos="fade-in">
+				<h3>Transparency</h3>
+				<p>No proprietary blends, no nonsense. All the ingredients in our products are listed on the label with exact dosages, so there is no need to guess what you put in your body.</p>
 			</div>
-			<div>
-				<img src="images/CSS.png" alt="CSS3 logo">
-				<h3>Paragraph 2</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo enim repellat quia, sequi placeat deserunt id necessitatibus, libero earum, facere, deleniti fuga ipsa! Totam quis, cupiditate, laborum dolor tempore ratione.</p>
+			<div data-aos="fade-in">
+				<h3>Simplicity</h3>
+				<p>We create all our formulas with simplicity in mind. We use a small amount of science-backed ingredients at efficacious dosages. No obscure ingredients, no subpar doses.</p>
+			</div>	
+			<div data-aos="fade-in">
+				<h3>Quality</h3>
+				<p>All our ingredients are sourced from FDA inspected, NSF certified laboratories, with regular testing to ensure the purity of  the ingredients.</p>
 			</div>
-			<div>
-				<img src="images/JS.png" alt="Javascript logo">
-				<h3>Paragraph 3</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem assumenda, praesentium ullam, tempora qui vero fuga, amet quas laborum tempore voluptates nostrum ea commodi ut ex inventore sint, repellendus numquam.</p>
+			<div data-aos="fade-in">
+				<h3>Affordability</h3>
+				<p>Despite our high standards of quality, we keep prices down so you do not have to break the bank to enjoy a Boosted lifestyle.</p>
 			</div>
+			<br>
 		</div>
 	</div>
 	<br>
@@ -93,4 +97,8 @@
 </body>
 
 <script type="text/javascript" src="script/js.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+	AOS.init();
+</script>
 </html>
