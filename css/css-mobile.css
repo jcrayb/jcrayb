@@ -4,13 +4,11 @@
     font-weight: normal;
     src: local('nevis Bold'), url('../fonts/nevis.woff') format('woff');
 }
-
 /*global stuff*/
 body{
 	font-family: 'nevis Bold';
 	background-color: white;
 	margin: 0;
-
 }
 
 .container{
@@ -42,7 +40,7 @@ header{
 	z-index: 100;
 	position:sticky;
 	top:0px;
-	background-color: white;
+	background-color: #00003c;
 	margin-top: 0px;
 	padding: 10px;
 	border-style: white solid;
@@ -52,21 +50,22 @@ header{
 
 #dbtn{
 	font-family: 'nevis Bold';
-	background: white;
+	background: #00003c;
+	color: white;
 	height: auto;
-	font-size: 3.5em;
+	font-size: 7vw;
 }
 
 #dropdown{
 	width: 100%;
 	height: auto;
 	display:none;
-	background: white;
+	background::#00003c;
 	position: relative;
 }
 
 header span{
-	 color: #000;
+	 color: #fff;
 }
 
 header h1{
@@ -83,7 +82,7 @@ header a:hover{
 }
 
 header a:visited{
-	color:black;
+	color:white;
 }
 
 nav{
@@ -97,7 +96,8 @@ nav{
 }
 
 nav a{
-	font-size: 3em;
+	color: white;
+	font-size: 7vw;
 	padding: 3px;
 }
 /*Main header stuff*/

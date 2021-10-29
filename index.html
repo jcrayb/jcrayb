@@ -20,7 +20,7 @@
 	let details = navigator.userAgent;
 	let regexp = /android|iphone|kindle|ipad/i;
 	let isMobileDevice = regexp.test(details);
-	if (x==1){
+	if (isMobileDevice){
 		theme.setAttribute("href", "css/css-mobile.css")
 	} else {
 		theme.setAttribute("href", "css/css.css")
@@ -39,24 +39,6 @@
 		</div>
 	</header>
 		
-	
-	<div class="container">
-		<div class="par1">
-			<p>
-				This website is currently being built
-			</p>
-		</div>
-	</div>
-	
-	<div class="container">
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo dolores expedita fugiat, odio enim minima, velit magni eum doloremque laborum. Eos eveniet omnis ut ullam, et totam modi optio voluptate.
-		</p>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda dolore aut cumque tenetur, repellendus sapiente sint nostrum, unde voluptatem voluptatum praesentium inventore dicta tempore culpa, corporis quae aliquam iure. Ea.
-		</p>
-	</div>	
-	
 	<div id="sl-container">
 		<div id = "slideshow">
 			<figure>
@@ -66,13 +48,12 @@
 				<img src="images/4.jpg" alt="">
 				<img src="images/1.jpg" alt="">
 			</figure>
-		</div>	
-	</div>
+			<h1 id="prom">Our four promises</h1>
+		</div>
 	
-	<br>
-		
 	<div class="container">
 		<div id="phalf">
+			<br>
 			<div data-aos="fade-in">
 				<h3>Transparency</h3>
 				<p>No proprietary blends, no nonsense. All the ingredients in our products are listed on the label with exact dosages, so there is no need to guess what you put in your body.</p>
