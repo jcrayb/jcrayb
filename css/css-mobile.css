@@ -163,7 +163,13 @@ nav a{
 }
 
 /*Slideshow*/
-
+#prom{
+	color: white;
+	text-align:center;
+	font-size: 10vw;
+	background: #00003c;
+	box-shadow: 0px 5px 26px 5px gray;
+}
 #phalf{
 	margin: auto;
 	display:grid;
