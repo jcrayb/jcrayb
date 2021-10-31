@@ -9,24 +9,13 @@
 <title>Boosted Beings</title>
 
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-<link rel="shortcut icon" href="images/favicon.ico">
+<link id="favicon" rel="shortcut icon" href="images/favicon.ico">
 <link id="theme" rel="stylesheet" type="text/css" href="css/css.css">
 </head>
 	
 
 <body>
-<script>
-	var x =1;
-	let details = navigator.userAgent;
-	let regexp = /android|iphone|kindle|ipad/i;
-	let isMobileDevice = regexp.test(details);
-	if (isMobileDevice){
-		theme.setAttribute("href", "css/css-mobile.css")
-	} else {
-		theme.setAttribute("href", "css/css.css")
-	}
-</script>
-	
+<script type="text/javascript" src="script/mobile.js"></script>
 	<header id="mheader">
 		<h1>Boosted<span>Beings</span></h1>
 		<button id="dbtn">Menu</button>
@@ -34,22 +23,23 @@
 			<nav id =  "main-navbar">
 				<a href="index.html">Home</a>
 				<a href="about.html">About</a>
-				<a href="index.html">Hello</a>
+				<a href="index.html">Products</a>
 			</nav>
 		</div>
 	</header>
-		
+
+<div id="wrapper">
 	<div id="sl-container">
 		<div id = "slideshow">
 			<figure>
 				<img src="images/1.jpg" alt="">
 				<img src="images/2.jpg" alt="">
-				<img src="images/3.jpg" alt="">
 				<img src="images/4.jpg" alt="">
 				<img src="images/1.jpg" alt="">
 			</figure>
 			<h1 id="prom">Our four promises</h1>
-		</div>
+        </div>
+	</div>
 	<div class="container">
 		<div id="phalf">
 			<br>
@@ -74,6 +64,7 @@
 	</div>
 	<br>
 	<br>
+</div>
 </body>
 
 <script type="text/javascript" src="script/js.js"></script>
