@@ -17,7 +17,7 @@ body{
 	background-color: white;
 	margin: 0;
 }
-
+/* Header */
 #mainHeader{
 	width: 100%;
 	margin-right: auto; 
@@ -25,7 +25,6 @@ body{
 	background-color: #000769;
 	text-decoration-color: aqua;
 }
-
 #headerTextWrapper{
 	width: 80%;
 	max-width: 1536px;
@@ -37,3 +36,12 @@ body{
 	text-align: center;
 	font-size: 48pt;
 }
+/* Header */
+
+.bodyWrapper{
+	width: 80%;
+	max-width: 1536px;
+	margin-right: auto; 
+	margin-left: auto;
+}
+
