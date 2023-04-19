@@ -40,7 +40,7 @@
         }
     }
 
-    var csvString = 'Name,Kills,Eliminated?\r\nAdam,1,No\r\nBraden,1,No\r\nBridget,0,No\r\nPatrick,0,No\r\nGerardo,0,No\r\nAnna,0,No\r\nAnna,0,No\r\nSandin,0,No\r\nLauren,0,No\r\nArianna,0,No\r\nPercy,0,Yes\r\nRyan,0,Yes\r\nJames,0,No\r\nDerrick,0,No\r\nTyler,0,No\r\nLucca,0,No\r\nJose,0,No\r\nMaria,0,No\r\nMelissa,0,No\r\nMatas,0,No\r\nDavid,0,No\r\nNinawa,0,No\r\n';
+    var csvString = 'Name,Kills,Eliminated?\r\nBraden,1,No\r\nAdam,1,No\r\nBridget,0,No\r\nJames,0,No\r\nDavid,0,No\r\nMatas,0,No\r\nMelissa,0,No\r\nMaria,0,No\r\nJose,0,No\r\nLucca,0,No\r\nTyler,0,No\r\nDerrick,0,No\r\nArianna,0,No\r\nLauren,0,No\r\nSandin,0,No\r\nAnna,0,No\r\nAnna,0,No\r\nGerardo,0,No\r\nPatrick,0,No\r\nNinawa,0,No\r\nRyan,0,Yes\r\nPercy,0,Yes\r\n';
     Papa.parse(csvString, {
         complete: function(results) {
             for(let i = 0; i < results.data.length; i++) {
