@@ -9,61 +9,128 @@
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="css/assassin.css">
 <link rel="mask-icon" href="iconsS/safari-pinned-tab.svg" color="#5bbad5">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
-<table style="width: 90vw; margin: auto;" class="table">
-    <thead>
-    <tr id="tableHeader">
-    </tr>
-    </thead>
-    <tbody id="tableBody">
-    </tbody>
-</table>
-<script>
-    function createDataElement(htmlTag, innerText, idParent) {
-        let node = document.createElement(htmlTag);
-        let textnode = document.createTextNode(innerText);
-        node.appendChild(textnode);
-        document.getElementById(idParent).appendChild(node);
-    }
-
-    function createHeaderElement(columnText) {
-        createDataElement("th", columnText, "tableHeader");
-    }
-
-    function createCellData(rowIndex, dataIndex, cellText) {
-        if(dataIndex === 0) {
-            let node = document.createElement("tr");
-            node.setAttribute("id", "row" + rowIndex);
-            document.getElementById("tableBody").appendChild(node);
-
-            createDataElement("td", cellText, "row" + rowIndex);
-        } else {
-            createDataElement("td", cellText, "row" + rowIndex);
-        }
-    }
-
-    var csvString = 'Name,Kills,Eliminated?\r\nBraden,1,No\r\nAdam,1,No\r\nBridget,0,No\r\nJames,0,No\r\nDavid,0,No\r\nMatas,0,No\r\nMelissa,0,No\r\nMaria,0,No\r\nJose,0,No\r\nLucca,0,No\r\nTyler,0,No\r\nDerrick,0,No\r\nArianna,0,No\r\nLauren,0,No\r\nSandin,0,No\r\nAnna,0,No\r\nAnna,0,No\r\nGerardo,0,No\r\nPatrick,0,No\r\nNinawa,0,No\r\nRyan,0,Yes\r\nPercy,0,Yes\r\n';
-    Papa.parse(csvString, {
-        complete: function(results) {
-            for(let i = 0; i < results.data.length; i++) {
-                if(i === 0) {
-                    for(let j = 0; j < results.data[i].length; j++) {
-                        createHeaderElement(results.data[i][j]);
-                    }
-                }
-                if(i > 0) {
-                    for(let j = 0; j < results.data[i].length; j++) {
-                        createCellData(i, j, results.data[i][j]);
-                    }
-                }
-            }
-        }
-    });
-</script>
+<table class="table">
+<thead><tr><th id="Field1">Name</th>
+<th id="Field2">Kills</th>
+<th id="Field3">Eliminated?</th>
+</tr></thead>
+<tbody><tr>
+<td>Braden</td>
+<td>1</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Adam</td>
+<td>1</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Bridget</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr>
+<td>James</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr>
+<td>David</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Matas</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Melissa</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Maria</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Jose</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Lucca</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Tyler</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Derrick</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Arianna</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Lauren</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Sandin</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Anna</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Anna</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Gerardo</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Patrick</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Ninawa</td>
+<td>0</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Ryan</td>
+<td>0</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Percy</td>
+<td>0</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
 </body>
 </html>

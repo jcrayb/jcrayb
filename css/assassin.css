@@ -1,0 +1,29 @@
+body{
+	background-color: #13294B
+}
+
+.table{
+	margin: auto;
+	max-width: 864px;
+	background-color: #ffffff;
+}
+
+thead{
+	background-color:#FF5F05;
+}
+
+#Field1{
+	width:50%;
+}
+
+#Field3{
+	width: 15%
+}
+
+#tableHeader{
+	background-color: #FF5F05;
+}
+
+#tableHeader{
+	color: #000000;
+}
