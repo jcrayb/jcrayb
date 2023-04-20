@@ -1,7 +1,7 @@
 ,Name,Target,Phone #,Eliminated?,Eliminated by,Kills
 0,Bridget,Melissa,3092214810,False,Nan,0
 1,James,Tyler,7325132460,False,Nan,0
-2,David,Sandin,815-236-7287,False,Nan,0
+2,David,Bridget,815-236-7287,False,Nan,1
 3,Matas,David,6303452298,False,Nan,0
 4,Melissa,James,2243876508,False,Nan,0
 5,Maria,Matas,331-980-5854,False,Nan,0
@@ -15,7 +15,7 @@
 13,Percy,-,9176357252,True,Braden,0
 14,Arianna,Lauren,8155402295,False,Nan,0
 15,Lauren,Lucca,3128353851,False,Nan,0
-16,Sandin,Bridget,773-983-7037,False,Nan,0
+16,Sandin,-,773-983-7037,True,David,0
 17,Anna,Adam,3095334809,False,Nan,0
 18,Anna,Patrick,312-825-3630,False,Nan,0
 19,Gerardo,Anna J.,7739790502,False,Nan,0
