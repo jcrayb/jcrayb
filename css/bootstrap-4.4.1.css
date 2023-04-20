@@ -1707,6 +1707,15 @@ pre code {
 .table thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #dee2e6;
+	background-color:#FF5F05;
+}
+
+.table .Field1{
+	width:50%;
+}
+
+.table .Field3{
+	width:15%;
 }
 
 .table tbody + tbody {
