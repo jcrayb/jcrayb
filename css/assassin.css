@@ -4,6 +4,7 @@ body{
 
 .table{
 	margin: auto;
+	width:100vw;
 	max-width: 864px;
 	background-color: #ffffff;
 }
@@ -12,11 +13,11 @@ thead{
 	background-color: #FF5F05;
 }
 
-#Field1{
+.Field1{
 	width:50%;
 }
 
-#Field3{
+.Field3{
 	width: 15%
 }
 
