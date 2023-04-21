@@ -11,7 +11,7 @@
 
     table {
       width: 100%;
-      margin: 0 auto;
+      margin: auto;
       table-layout: fixed;
     }
 
@@ -41,10 +41,15 @@
 	  @media (min-width: 992px){
 		  table {
 			max-width:  80%; /* Remove max-width on the table */
-			margin: 0 auto;
+			margin: auto;
 			table-layout: fixed;
-}
+		}
 	  }
+	  @media (max-width: 992px) {
+  		table {
+    		font-size: 2em; /* Adjust the font size as needed */
+  		}
+	}
   </style>
 </head>
 <body>
