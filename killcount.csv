@@ -1,6 +1,7 @@
 Name,Kills,Eliminated?
 David,1,No
 Braden,1,No
+Lucca,1,No
 Adam,1,No
 Bridget,0,No
 James,0,No
@@ -8,9 +9,7 @@ Matas,0,No
 Melissa,0,No
 Maria,0,No
 Jose,0,No
-Lucca,0,No
 Tyler,0,No
-Derrick,0,No
 Arianna,0,No
 Lauren,0,No
 Anna,0,No
@@ -18,6 +17,7 @@ Anna,0,No
 Gerardo,0,No
 Patrick,0,No
 Ninawa,0,No
+Derrick,0,Yes
 Ryan,0,Yes
 Percy,0,Yes
 Sandin,0,Yes

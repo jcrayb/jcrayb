@@ -7,9 +7,9 @@
 5,Maria,Matas,331-980-5854,False,Nan,0
 6,Braden,Maria,(630) 200-1330,False,Nan,1
 7,Jose,Anna Z.,13126100280,False,Nan,0
-8,Lucca,Derick,7082449244,False,Nan,0
+8,Lucca,Braden,7082449244,False,Nan,1
 9,Tyler,Jose,331-213-6547,False,Nan,0
-10,Derrick,Braden,7082087634,False,Nan,0
+10,Derrick,-,7082087634,True,Lucca,0
 11,Ryan,-,3312290458,True,Adam,0
 12,Adam,Arianna,7735635413,False,Nan,1
 13,Percy,-,9176357252,True,Braden,0
