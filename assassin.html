@@ -1,59 +1,97 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Add Bootstrap CSS link -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Table from CSV</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Custom CSS for table styling */
+    #table-container {
+      max-width: 100%;
+      overflow-x: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    table {
+      width: 100%; /* Add width: 100% to make the table fill the container */
+      max-width: 800px; /* Add max-width to limit the table width */
+      margin: 0 auto; /* Add margin: 0 auto to center the table horizontally */
+      table-layout: fixed; /* Add table-layout: fixed to make the table width fixed */
+    }
+
+    th {
+      background-color: #f8f9fa;
+      font-weight: bold;
+    }
+
+    tbody tr:hover {
+      background-color: #f8f9fa;
+    }
+
+    /* Custom CSS for <tr> elements */
+    tbody tr {
+      background-color: #fff;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+
+    tbody tr:hover {
+      background-color: #e9ecef;
+    }
+
+    /* Custom CSS for desktop screens */
+    @media (min-width: 992px) {
+      table {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div id="table-container">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Kills</th>
+			<th scope="col">Eliminated?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Rows will be added dynamically from the CSV file -->
+      </tbody>
+    </table>
+  </div>
 
-<div class="container">
-    <h2>Responsive Table</h2>
-    <div class="table-responsive">
-        <table class="table" id="myTable">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Kills</th>
-                    <th>Eliminated?</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Table body content will be dynamically populated here -->
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<!-- Add Bootstrap JS link (optional) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>
-    window.onload = function() {
-        // Fetch the CSV file
-        fetch('https://www.jcrayb.com/killcount.csv')
-        .then(response => response.text())
-        .then(data => {
-            // Parse CSV data into an array of objects
-            const dataArray = data.split('\n').map(row => row.split(','));
-            const headers = dataArray[0];
-            const rows = dataArray.slice(1);
-
-            // Loop through the rows and create table rows and cells
-            const tableBody = document.querySelector('#myTable tbody');
-            rows.forEach(rowData => {
-                const row = document.createElement('tr');
-                rowData.forEach((cellData, index) => {
-                    const cell = document.createElement(index === 0 ? 'th' : 'td');
-                    cell.textContent = cellData;
-                    row.appendChild(cell);
-                });
-                tableBody.appendChild(row);
-            });
-        })
-        .catch(error => console.error('Error fetching CSV file:', error));
-    }
-</script>
+  <script>
+    // JavaScript code for fetching CSV and populating the table
+    fetch('https://jcrayb.com/killcount.csv')
+      .then(response => response.text())
+      .then(data => {
+        let tableBody = document.querySelector('tbody');
+        let rows = data.split('\n');
+        for (let i = 1; i < rows.length; i++) {
+          let row = document.createElement('tr');
+          let cells = rows[i].split(',');
+          for (let j = 0; j < cells.length; j++) {
+            let cell = document.createElement(i === 0 ? 'th' : 'td'); // Use th for header row, td for other rows
+            cell.textContent = cells[j];
+            row.appendChild(cell);
+          }
+          tableBody.appendChild(row);
+        }
+      })
+      .catch(error => console.error(error));
+  </script>
 </body>
 </html>
+Please replace your previous HTML and CSS code with this updated version. If the issue persists, please let me know and I'll be happy to help troubleshoot further.
+
+
+
+
+
+
