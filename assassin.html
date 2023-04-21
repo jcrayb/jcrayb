@@ -32,7 +32,7 @@
 <script>
     window.onload = function() {
         // Fetch the CSV file
-        fetch('killcount.csv')
+        fetch('https://www.jcrayb.com/killcount.csv')
         .then(response => response.text())
         .then(data => {
             // Parse CSV data into an array of objects
