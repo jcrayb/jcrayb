@@ -1,224 +1,140 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>ITFC Assassin 2023</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-    /* Custom CSS for table styling */
-    #table-container {
-      overflow-x: auto;
-    }
+  <title>My Personal Projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<style>
+  /* Custom styles for the cards */
+  .card {
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+  }
 
-    table {
-      width: 100%;
-      margin: auto;
-      table-layout: fixed;
-    }
+  .card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
 
-    th {
-      background-color: #f8f9fa;
-      font-weight: bold;
-    }
+  .card-img-top {
+    max-height: 200px;
+    object-fit: cover;
+  }
 
-    tbody tr:hover {
-      background-color: #f8f9fa;
-    }
+  .card-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
 
-    /* Custom CSS for <tr> elements */
-    tbody tr {
-      background-color: #fff;
-    }
+  .card-text {
+    font-size: 14px;
+    color: #666;
+  }
 
-    tbody tr:nth-child(even) {
-      background-color: #f8f9fa;
-    }
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
 
-    tbody tr:hover {
-      background-color: #e9ecef;
-    }
+  .btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+</style>
 
-    /* Custom CSS for mobile screens */
-	  @media (min-width: 992px){
-		  table {
-			max-width:  80%; /* Remove max-width on the table */
-			margin: auto;
-			table-layout: fixed;
-		}
-	  }
-	  
-	  /* CSS for the podium */
-.podium {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            height: 300px;
-            gap: 20px;
-        }
-
-        .step {
-            flex: 1;
-            background-color: #f8f8f8;
-            padding: 20px;
-            text-align: center;
-            font-size: 18px;
-        }
-
-        .step:first-child {
-            height: 100px;
-        }
-
-        .step:nth-child(2) {
-            height: 200px;
-        }
-
-        .step:last-child {
-            height: 300px;
-        }
-
-        .step h2 {
-            margin: 0;
-            padding: 0;
-        }
-
-        table {
-            margin-top: 50px;
-            width: 100%;
-            text-align: center;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 10px;
-            border: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #f8f8f8;
-        }
-	  #top3{
-		  margin: auto;
-		  text-align: center;
-	  }
-	  
-	  @media (max-width: 992px) {
-  		table {
-    		font-size: 3em; /* Adjust the font size as needed */
-  		}
-		  .podium h2{
-			  font-size: 3em;
-		  }
-		  .podium p{
-			  font-size: 2em;
-		  }
-		  .step:first-child {
-            height:8em;
-        }
-
-        .step:nth-child(2) {
-            height: 12em;
-        }
-
-        .step:last-child {
-            height: 16em;
-        }
-		  
-		  #top3 {
-			  font-size:5em;
-		  }
-	}
-  </style>
 </head>
+
 <body>
-	<h1 id ="top3">Top 3</h1>
-    <div class="podium">
-        <div class="step">
-            <h2 id="third-rank">Third Place</h2>
-            <p id="third-name"></p>
-      </div>
-        <div class="step">
-            <h2 id="second-rank">Second Place</h2>
-            <p id="second-name"></p>
-        </div>
-        <div class="step">
-            <h2 id="winner-rank">First Place</h2>
-            <p id="winner-name"></p>
-        </div>
-</div>
-	
-  <div id="table-container">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Kills</th>
-			<th scope="col">Eliminated?</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Rows will be added dynamically from the CSV file -->
-      </tbody>
-    </table>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">My Personal Projects</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Projects
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Project 1</a>
+            <a class="dropdown-item" href="#">Project 2</a>
+            <a class="dropdown-item" href="#">Project 3</a>
+            <a class="dropdown-item" href="#">Project 4</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="jumbotron text-center">
+    <h1>This page is a Work In Progress</h1>
+	  <p>Click here for the ITFC Assassin Leaderboard</p>
+	<a class="btn btn-primary" href="assassin.html">Leaderboard</a>
+    
   </div>
 
-  <script>
-    // JavaScript code for fetching CSV and populating the table
-    fetch('https://jcrayb.com/killcount.csv')
-      .then(response => response.text())
-      .then(data => {
-        let tableBody = document.querySelector('tbody');
-        let rows = data.split('\n');
-        for (let i = 1; i < rows.length; i++) {
-          let row = document.createElement('tr');
-          let cells = rows[i].split(',');
-          for (let j = 0; j < cells.length; j++) {
-            let cell = document.createElement(i === 0 ? 'th' : 'td'); // Use th for header row, td for other rows
-            cell.textContent = cells[j];
-            row.appendChild(cell);
-          }
-          tableBody.appendChild(row);
-        }
-      })
-	  fetch('https://jcrayb.com/killcount.csv')
-      .then(response => response.text())
-      .then(data => {
-        const lines = data.split('\n');
-        let tableHTML = '';
-        let contestants = [];
-        for (let i = 1; i < lines.length; i++) {
-          const [name, killCount, eliminated] = lines[i].split(',');
-          const rank = i;
-          const contestant = { rank, name, killCount: parseInt(killCount) };
-          contestants.push(contestant);
-        }
-
-        // Sort contestants by kill count in descending order
-        contestants.sort(function(a, b) {
-          return b.killCount - a.killCount;
-        });
-
-        for (let i = 0; i < contestants.length && i < 3; i++) {
-          const { rank, name, killCount } = contestants[i];
-          tableHTML += `<tr><td>${rank}</td><td>${name}</td><td>${killCount}</td></tr>`;
-          if (i === 0) {
-            document.getElementById('winner-rank').innerText = `#${rank}`;
-            document.getElementById('winner-name').innerText = name;
-          } else if (i === 1) {
-            document.getElementById('second-rank').innerText = `#${rank}`;
-            document.getElementById('second-name').innerText = name;
-          } else if (i === 2) {
-            document.getElementById('third-rank').innerText = `#${rank}`;
-            document.getElementById('third-name').innerText = name;
-          }
-        }
-        document.getElementById('table').innerHTML = tableHTML;
-      })
-      .catch(error => console.error(error));
-  </script>
-</body>
-</html>
-
-
-
-
-
-
+  <!-- Projects Section -->
+  <div class="container">
+    <h2 class="text-center">My Projects</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <img class="card-img-top" src="project1.jpg" alt="Project 1">
+          <div class="card-body">
+            <h5 class="card-title">Project 1</h5>
+            <p class="card-text">A brief description of Project 1.</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <img class="card-img-top" src="project2.jpg" alt="Project 2">
+          <div class="card-body">
+            <h5 class="card-title">Project 2</h5>
+            <p class="card-text">A brief description of Project 2.</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+		</div>
+		</div>
+	<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <img class="card-img-top" src="project3.jpg" alt="Project 3">
+      <div class="card-body">
+        <h5 class="card-title">Project 3</h5>
+        <p class="card-text">A brief description of Project 3.</p>
+        <a href="#" class="btn btn-primary">Learn More</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card">
+      <img class="card-img-top" src="project4.jpg" alt="Project 4">
+      <div class="card-body">
+        <h5 class="card-title">Project 4</h5>
+        <p class="card-text">A brief description of Project 4.</p>
+        <a href="#" class="btn btn-primary">Learn More</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
