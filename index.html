@@ -45,11 +45,7 @@
 			table-layout: fixed;
 		}
 	  }
-	  @media (max-width: 992px) {
-  		table {
-    		font-size: 2em; /* Adjust the font size as needed */
-  		}
-	}
+	  
 	  /* CSS for the podium */
 .podium {
             display: flex;
@@ -103,6 +99,29 @@
 		  margin: auto;
 		  text-align: center;
 	  }
+	  
+	  @media (max-width: 992px) {
+  		table {
+    		font-size: 3em; /* Adjust the font size as needed */
+  		}
+		  .podium h2{
+			  font-size: 3em;
+		  }
+		  .podium p{
+			  font-size: 2em;
+		  }
+		  .step:first-child {
+            height:8em;
+        }
+
+        .step:nth-child(2) {
+            height: 12em;
+        }
+
+        .step:last-child {
+            height: 16em;
+        }
+	}
   </style>
 </head>
 <body>
