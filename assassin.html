@@ -8,13 +8,14 @@
 <body>
 
 <div class="container">
+    <h2>Responsive Table</h2>
     <div class="table-responsive">
         <table class="table" id="myTable">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Kills</th>
-                    <th>Eliminated?</th>
+                    <th>Header 1</th>
+                    <th>Header 2</th>
+                    <th>Header 3</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,10 +29,10 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>+
+<script>
     window.onload = function() {
         // Fetch the CSV file
-        fetch('https://jcrayb.com/killcount.csv')
+        fetch('killcount.csv')
         .then(response => response.text())
         .then(data => {
             // Parse CSV data into an array of objects
