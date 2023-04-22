@@ -14,10 +14,12 @@
     margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease-in-out;
+	transition: transform 0.3s ease; /* Add transition property */
   }
 
   .card:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	transform: scale(1.03);
   }
 
   .card-img-top {
@@ -45,88 +47,43 @@
     border-color: #0062cc;
   }
 		/* Custom styles for the navbar */
-  .navbar {
-    background-color: #333;
-    padding: 10px; /* adjust the padding as needed */
-    line-height: 40px; /* adjust the line-height as needed */
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    transition: background-color 0.3s ease-in-out;
-  }
+  /* Custom CSS for Modern Responsive Navbar */
+    .navbar {
+      background-color: #333;
+      border-radius: 0;
+      margin-bottom: 0;
+    }
 
-  .navbar-brand {
-    font-size: 24px;
-    font-weight: bold;
-    color: #fff; /* Set the brand text color to white */
-    transition: color 0.3s ease-in-out; /* Add transition effect for smooth color change */
-  }
+    .navbar-brand {
+      color: #FFF;
+      font-weight: bold;
+    }
 
-  .navbar-brand:hover {
-    color: #007bff; /* Change the brand text color on hover */
-  }
+    .navbar-nav.ml-auto .nav-link {
+      color: #FFF;
+      font-weight: bold;
+      padding-right: 15px;
+    }
 
-  .navbar-toggler {
-    border: none;
-    outline: none;
-    padding: 0;
-    background-color: transparent; /* Set the background color of the toggler to transparent */
-  }
+    .navbar-toggler {
+      border: none;
+      background-color: transparent;
+      color: #FFF;
+      font-size: 24px;
+      padding: 8px 10px;
+      border-radius: 4px;
+      margin-right: 15px;
+    }
 
-  .navbar-toggler:focus {
-    outline: none;
-  }
+    .navbar-toggler:focus,
+    .navbar-toggler:hover {
+      outline: none;
+    }
 
-  .navbar-toggler-icon {
-    background-color: #fff; /* Set the background color of the toggler icon to white */
-    width: 32px;
-    height: 2px;
-    transition: background-color 0.3s ease-in-out; /* Add transition effect for smooth color change */
-    position: relative;
-  }
-
-  .navbar-toggler-icon:before,
-  .navbar-toggler-icon:after {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: #fff; /* Set the background color of the chevron shape to white */
-    transition: background-color 0.3s ease-in-out; /* Add transition effect for smooth color change */
-  }
-
-  .navbar-toggler-icon:before {
-    top: -8px; /* Adjust the position of the top chevron shape */
-  }
-
-  .navbar-toggler-icon:after {
-    bottom: -8px; /* Adjust the position of the bottom chevron shape */
-  }
-
-  .navbar-toggler:hover .navbar-toggler-icon:before,
-  .navbar-toggler:hover .navbar-toggler-icon:after {
-    background-color: #007bff; /* Change the chevron shape color on hover */
-  }
-
-  .navbar-nav .nav-link {
-    font-size: 18px;
-    font-weight: bold;
-    color: #fff; /* Set the link text color to white */
-    transition: color 0.3s ease-in-out; /* Add transition effect for smooth color change */
-    margin-left: 15px;
-    margin-right: 15px;
-  }
-
-  .navbar-nav .nav-link:hover {
-    color: #007bff; /* Change the link text color on hover */
-  }
-		
-body {
-    margin-top: 70px;
-    /* Change the value as needed to adjust the margin-top */
-  }
+    .navbar-toggler-icon {
+      font-size: 24px;
+    }
+	
 </style>
 
 </head>
@@ -134,30 +91,22 @@ body {
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <a class="navbar-brand" href="index.html">Chris' Personal Projects</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
+  <nav class="navbar navbar-expand-md navbar-dark">
+    <a href="#" class="navbar-brand">Chris's Personal Projects</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
+        <li class="nav-item active">
+          <a href="#" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="about.html">About me</a>
+          <a href="#" class="nav-link">About</a>
         </li>
-        <!--<li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-            Projects
-          </a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Project 1</a>
-            <a class="dropdown-item" href="#">Project 2</a>
-            <a class="dropdown-item" href="#">Project 3</a>
-            <a class="dropdown-item" href="#">Project 4</a>
-          </div>
-        </li>-->
+        <li class="nav-item">
+          <a href="#" class="nav-link">Services</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
         </li>
@@ -221,3 +170,5 @@ body {
   </div>
 </div>
 </div>
+</body>
+</html>
