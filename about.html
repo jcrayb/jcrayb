@@ -8,73 +8,26 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<style>
-  /* Custom styles for the cards */
-  .card {
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease-in-out;
-  }
-
-  .card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-
-  .card-img-top {
-    max-height: 200px;
-    object-fit: cover;
-  }
-
-  .card-title {
-    font-size: 18px;
-    font-weight: bold;
-  }
-
-  .card-text {
-    font-size: 14px;
-    color: #666;
-  }
-
-  .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-  }
-
-  .btn-primary:hover {
-    background-color: #0069d9;
-    border-color: #0062cc;
-  }
-</style>
+	<link rel="stylesheet" href="css/navbar.css">
 
 </head>
 
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <a class="navbar-brand" href="#">Chris' Personal Projects</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
+  <nav class="navbar navbar-expand-md navbar-dark">
+    <a href="#" class="navbar-brand">Chris's Personal Projects</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
+        <li class="nav-item active">
+          <a href="index.html" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="about.html">About me</a>
+          <a href="about.html" class="nav-link">About me</a>
         </li>
-        <!--<li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-            Projects
-          </a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Project 1</a>
-            <a class="dropdown-item" href="#">Project 2</a>
-            <a class="dropdown-item" href="#">Project 3</a>
-            <a class="dropdown-item" href="#">Project 4</a>
-          </div>
-        </li>-->
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
         </li>

@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+
+.navbar {
+      background-color: #333;
+      border-radius: 0;
+      margin-bottom: 0;
+    }
+
+    .navbar-brand {
+      color: #FFF;
+      font-weight: bold;
+    }
+
+    .navbar-nav.ml-auto .nav-link {
+      color: #FFF;
+      font-weight: bold;
+      padding-right: 15px;
+    }
+
+    .navbar-toggler {
+      border: none;
+      background-color: transparent;
+      color: #FFF;
+      font-size: 24px;
+      padding: 8px 10px;
+      border-radius: 4px;
+      margin-right: 15px;
+    }
+
+    .navbar-toggler:focus,
+    .navbar-toggler:hover {
+      outline: none;
+    }
+
+    .navbar-toggler-icon {
+      font-size: 24px;
+    }

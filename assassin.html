@@ -3,156 +3,27 @@
 <head>
   <title>ITFC Assassin 2023</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/assassin.css">
+	<link rel="stylesheet" href="css/navbar.css">
   <style>
-    /* Custom CSS for table styling */
-    #table-container {
-      overflow-x: auto;
-    }
-
-    table {
-      width: 100%;
-      margin: auto;
-      table-layout: fixed;
-    }
-
-    th {
-      background-color: #f8f9fa;
-      font-weight: bold;
-    }
-
-    tbody tr:hover {
-      background-color: #f8f9fa;
-    }
-
-    /* Custom CSS for <tr> elements */
-    tbody tr {
-      background-color: #fff;
-    }
-
-    tbody tr:nth-child(even) {
-      background-color: #f8f9fa;
-    }
-
-    tbody tr:hover {
-      background-color: #e9ecef;
-    }
-
-    /* Custom CSS for mobile screens */
-	  @media (min-width: 992px){
-		  table {
-			max-width:  80%; /* Remove max-width on the table */
-			margin: auto;
-			table-layout: fixed;
-		}
-	  }
-	  
-	  /* CSS for the podium */
-.podium {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            height: 300px;
-            gap: 20px;
-        }
-
-        .step {
-            flex: 1;
-            background-color: #f8f8f8;
-            padding: 20px;
-            text-align: center;
-            font-size: 18px;
-        }
-
-        .step:first-child {
-            height: 100px;
-        }
-
-        .step:nth-child(2) {
-            height: 200px;
-        }
-
-        .step:last-child {
-            height: 300px;
-        }
-
-        .step h2 {
-            margin: 0;
-            padding: 0;
-        }
-
-        table {
-            margin-top: 50px;
-            width: 100%;
-            text-align: center;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 10px;
-            border: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #f8f8f8;
-        }
-	  #top3{
-		  margin: auto;
-		  text-align: center;
-	  }
-	  
-	  @media (max-width: 992px) {
-  		table {
-    		font-size: 3em; /* Adjust the font size as needed */
-  		}
-		  .podium h2{
-			  font-size: 3em;
-		  }
-		  .podium p{
-			  font-size: 2em;
-		  }
-		  .step:first-child {
-            height:8em;
-        }
-
-        .step:nth-child(2) {
-            height: 12em;
-        }
-
-        .step:last-child {
-            height: 16em;
-        }
-		  
-		  #top3 {
-			  font-size:5em;
-		  }
-	}
+    
   </style>
 </head>
 <body>
-	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <a class="navbar-brand" href="index.html">Chris' Personal Projects</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
+	<!-- Navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark">
+    <a href="#" class="navbar-brand">Chris's Personal Projects</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
+        <li class="nav-item active">
+          <a href="index.html" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="about.html">About me</a>
+          <a href="about.html" class="nav-link">About me</a>
         </li>
-        <!--<li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-            Projects
-          </a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Project 1</a>
-            <a class="dropdown-item" href="#">Project 2</a>
-            <a class="dropdown-item" href="#">Project 3</a>
-            <a class="dropdown-item" href="#">Project 4</a>
-          </div>
-        </li>-->
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
         </li>
