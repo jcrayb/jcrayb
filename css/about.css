@@ -50,8 +50,13 @@
   font-weight: bold;
 }
 
+.timeline .timeline-date {
+  font-size: 12px;
+}
+
 .timeline .timeline-subtitle {
   font-size: 14px;
+	font-weight: bold;
   color: #777;
 }
 
@@ -72,4 +77,33 @@
   border-radius: 4px;
 }
 
-
+@media (max-width: 767px) {
+  .timeline li {
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .timeline .timeline-panel {
+    flex-basis: 100%;
+    margin-left: 0;
+  }
+  
+  .timeline .timeline-image {
+    flex-basis: 100%;
+    max-width: 100%;
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 20px; /* Add margin at bottom to push image above text */
+  }
+  
+  .timeline .timeline-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 0; /* Remove margin at bottom to eliminate space between image and text */
+  }
+  
+  .timeline .timeline-heading {
+    order: 2; /* Change order of text to appear after image */
+  }
+}

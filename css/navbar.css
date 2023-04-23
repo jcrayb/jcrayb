@@ -36,3 +36,8 @@
     .navbar-toggler-icon {
       font-size: 24px;
     }
+.flag-icon {
+    width: 1.5em; /* Set width to 1em */
+    height: 1.5em; /* Set height to 1em */
+    margin-right: 0.25em; /* Add some margin for spacing */
+}
