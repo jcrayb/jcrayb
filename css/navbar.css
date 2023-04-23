@@ -43,7 +43,7 @@
 }
     /* CSS for black dropdown menu */
 .dropdown-menu {
-    background-color: #000; /* Set background color to black */
+    background-color: #333; /* Set background color to black */
 }
 .dropdown-item {
     color: #fff; /* Set text color to white */
