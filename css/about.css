@@ -91,17 +91,15 @@
   .timeline .timeline-image {
     flex-basis: 100%;
     max-width: 100%;
-    margin-right: 0;
-    margin-left: 0;
-    margin-bottom: 20px; /* Add margin at bottom to push image above text */
+    margin-right: auto;
+    margin-left: auto;
   }
   
   .timeline .timeline-image img {
-    max-width: 40%;
-    height: auto;
-	  margin:auto;
+    width: auto;
+    max-height: 50%;
     border-radius: 4px;
-    margin-bottom: 0; /* Remove margin at bottom to eliminate space between image and text */
+    margin-bottom: 20px; /* Remove margin at bottom to eliminate space between image and text */
   }
   
   .timeline .timeline-heading {
