@@ -1,0 +1,35 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Footer Styles */
+.footer{
+  background-color: #333; /* Set background color */
+  padding-top:40px; /* Add top padding */
+	color: white;
+}
+
+.footer-heading {
+  font-size: 18px; /* Set heading font size */
+  font-weight: bold; /* Set heading font weight */
+  margin-bottom: 15px; /* Add bottom margin to headings */
+}
+
+.footer-list {
+  list-style-type: none; /* Remove default list styles */
+  padding: 0; /* Remove padding from list */
+}
+
+.footer-list li {
+  margin-bottom: 5px; /* Add bottom margin to list items */
+}
+
+.footer-list a {
+  color: #333; /* Set link color */
+  text-decoration: none; /* Remove link underline */
+	color: white;
+}
+
+.footer-list a:hover {
+  color: #007bff; /* Set link color on hover */
+}
+
