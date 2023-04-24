@@ -79,7 +79,7 @@
 
   <script>
     // JavaScript code for fetching CSV and populating the table
-    fetch('https://jcrayb.com/killcount.csv')
+    fetch('https://jcrayb.com/csv/killcount.csv')
       .then(response => response.text())
       .then(data => {
         let tableBody = document.querySelector('tbody');
@@ -95,7 +95,7 @@
           tableBody.appendChild(row);
         }
       })
-	  fetch('https://jcrayb.com/killcount.csv')
+	  fetch('https://jcrayb.com/csv/killcount.csv')
       .then(response => response.text())
       .then(data => {
         const lines = data.split('\n');
