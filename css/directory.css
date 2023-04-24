@@ -1,0 +1,108 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* CSS for Timeline */
+
+/* CSS for Timeline */
+
+/* CSS for Timeline */
+
+.timeline {
+  position: relative;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.timeline li {
+  position: relative;
+  min-height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+	transition: transform 0.3s ease; /* Add transition property */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.timeline li:hover{
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	transform: scale(1.03);
+}
+
+.timeline .timeline-panel {
+  position: relative;
+  flex-basis: 50%;
+  margin-left: 70px;
+}
+
+.timeline .timeline-heading {
+  margin-bottom: 10px;
+}
+
+.timeline .timeline-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.timeline .timeline-date {
+  font-size: 12px;
+}
+
+.timeline .timeline-subtitle {
+  font-size: 14px;
+	font-weight: bold;
+  color: #777;
+}
+
+.timeline .timeline-body {
+  font-size: 16px;
+}
+
+.timeline .timeline-image {
+  flex-basis: 30%;
+  max-width: 200px;
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
+.timeline .timeline-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+@media (max-width: 992px) {
+  .timeline li {
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .timeline .timeline-panel {
+    flex-basis: 100%;
+    margin-left: 0;
+  }
+  
+  .timeline .timeline-image {
+    flex-basis: 100%;
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  .timeline .timeline-image img {
+    width: auto;
+    max-height: 50%;
+    border-radius: 4px;
+    margin-bottom: 20px; /* Remove margin at bottom to eliminate space between image and text */
+  }
+  
+  .timeline .timeline-heading {
+    order: 2; /* Change order of text to appear after image */
+  }
+}
