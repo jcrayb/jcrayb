@@ -77,6 +77,11 @@
   border-radius: 4px;
 }
 
+.timeline a {
+  color: #000; /* Set link text color to black */
+  text-decoration: none; /* Remove underline */
+}
+
 @media (max-width: 992px) {
   .timeline li {
     flex-direction: column;
