@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Python Web App</h1>
+    <form method="post" action="/">
+        <label for="input_var">Input Variable:</label>
+        <input type="text" name="input_var" id="input_var">
+        <input type="submit" value="Submit">
+    </form>
+    {% if output %}
+        <h2>Output:</h2>
+        <p>{{ output }}</p>
+    {% endif %}
+</body>
+</html>
