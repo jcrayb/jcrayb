@@ -1,9 +1,9 @@
 ,Name,Target,Phone #,Eliminated?,Eliminated by,Kills
 0,Bridget,Melissa,3092214810,False,Nan,1
-1,James,-,7325132460,True,Time,0
+1,James,-,7325132460,True,Melissa,0
 2,David,-,815-236-7287,True,Matas,1
 3,Matas,Bridget,6303452298,False,Nan,1
-4,Melissa,-,2243876508,True,Bridget,0
+4,Melissa,-,2243876508,True,Bridget,1
 5,Maria,-,331-980-5854,True,Time,0
 6,Braden,-,(630) 200-1330,False,Nan,1
 7,Jose,Anna Z.,13126100280,False,Nan,1
