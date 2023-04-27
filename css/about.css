@@ -106,3 +106,7 @@
     order: 2; /* Change order of text to appear after image */
   }
 }
+
+.timeline p{
+	text-align:justify;
+}
