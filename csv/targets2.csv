@@ -1,8 +1,8 @@
 ,Name,Target,Phone #,Eliminated?,Eliminated by,Kills
-0,Bridget,Ninawa,3092214810,FALSE,Nan,1
+0,Bridget,-,3092214810,TRUE,Lucca,1
 1,Matas,-,6303452298,TRUE,Ninawa,1
 2,Braden,-,(630) 200-1330,TRUE,Adam,2
 3,Jose,-,13126100280,TRUE,Braden,1
-4,Lucca,Adam,7082449244,FALSE,Nan,1
-5,Adam,Bridget,7735635413,FALSE,Nan,3
+4,Lucca,Lucca,7082449244,FALSE,Nan,3
+5,Adam,-,7735635413,TRUE,Lucca,3
 6,Ninawa,Lucca,6309306658,FALSE,Nan,2
