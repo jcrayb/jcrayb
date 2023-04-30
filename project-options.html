@@ -79,7 +79,7 @@
  <div class="container">
     <div class="row">
 	<div class="col-md-12">
-		<p>This whole project started when I wanted to find option price data to backtest an earnings strategy. SoFi seemed to be a prime target for short-strangles/iron condors, due to its implied move historically being significantly higher than its realized move, and being a high IV stock premiums looked attractive. This strategy needed to be put to the test. I consulted MarketChameleon, my favorite website for such data, but while it was possible to get some data about historical implied vs. realized moves, the actual numbers were locked behind a 99$/month paywall. I then tried to get historical option data using the yfinance python library, but to no avail, only current prices are available. The solution then seemed clear: create a program that would fetch option data after every market close and store it, which could then be consulted whenever needed. This was about 3 weeks before SoFi's upcoming earnings (May 1st 2023), and a deadline was set for 2 days before their earnings, as to not miss this earnings cycle.</p>
+		<p>This whole project started when I wanted to find option price data to backtest an earnings strategy. SoFi seemed to be a prime target for short-strangles/iron condors, due to its implied move historically being significantly higher than its realized move, and being a high IV stock, premiums looked attractive. This strategy needed to be put to the test. I consulted MarketChameleon, my favorite website for such data, but while it was possible to get some data about historical implied vs. realized moves, the actual numbers were locked behind a 99$/month paywall. I then tried to get historical option data using the yfinance python library, but to no avail, only current prices are available. The solution then seemed clear: create a program that would fetch option data after every market close and store it, which could then be consulted whenever needed. This was about 3 weeks before SoFi's upcoming earnings (May 1st 2023), and a deadline was set for 2 days before their earnings, as to not miss this earnings cycle.</p>
         <li class="list-topper">This project would be split into 3 parts:</li>
 	  <li>a program capable of fetching option data and storing it</li>
 		<li>a device running 24/7 physically storing the data, accessible from anywhere, which would run after each market close</li>
@@ -87,17 +87,17 @@
 	</div>
       <div class="col-md-6">
         <img src="images/option-data-function.PNG" class="img-wrap" alt="python function storing option data">
-		  <p>Above is the actual function that is used to fetch and store option data. It seems simple now, but trial and error was required to dial down the proper format, as well as figure out error handling, which will be talked about later.</p>
       </div>
 	
       <div class="col-md-6">
-       	<p>The first order of business was a function that would accept a stock symbol and save all the data necessary. The first decision to make was how to store said data. The original intent was to create one csv file per day, with each column's header being the expiry date, and the corresponding data being stored in a singular cell beneath the header cell. This was done with the belief that saving a singular file would save on storage and processing speed. However, during testing it was found that when trying to access the data, python couldn't unpack the data properly, displaying mess of text instead of a full table. The decision was then made to instead store each expiry date's data in its own file, one for calls and one for puts.</p>
-		  <p>Below is a typical table containing all the data yfinance returns per expiry date:&nbsp; &nbsp; &nbsp;</p>
-		<img src="images/option-data-table.PNG" class="img-wrap" alt="table showing standard data format">
-	    <p>Theoretically, some columns could be cut out like the "contractSymbol" or "contractSize" to save some storage space. But in the event that this data becomes relevant in the future, it was decided to keep it, at the expense of a few kilobytes per day.</p>
+       	<p>The first order of business was a function that would accept a stock symbol and save all the data necessary. The first decision to make was how to store said data. The original intent was to create one csv file per day, with each column's header being the expiry date, and the corresponding data being stored in a singular cell beneath the header cell. This was done with the belief that saving a singular file would save on storage and processing speed. However, during testing it was found that when trying to access the data, python couldn't unpack the data properly, displaying mess of text instead of a full table. The decision was then made to instead store each expiry date's data in its own file, one for calls and one for puts, which looks like this.</p>
+		  <img src="images/option-file-structure.PNG" alt="image illustrating file structure">
       </div>
 	<div class="col-md-12">
-		<p>Sed mollis velit nec lorem luctus, in dapibus augue iaculis. Integer nisl urna, venenatis vel rhoncus sed, auctor feugiat mi. Ut condimentum volutpat tellus eget volutpat. Nullam ut nulla ligula. Praesent efficitur nisl sed neque consequat lacinia. In interdum lectus quis velit faucibus, a sodales nisl tristique. Donec cursus at ex vel facilisis. In hac habitasse platea dictumst. Donec feugiat dapibus erat vitae congue. Nam consequat rutrum tortor id auctor.</p>
+		<p>These files contain all the data yfinance returns, an example can be found below:</p>
+		<img src="images/option-data-table.PNG" class="img-wrap" alt="table showing standard data format">
+	    <p>Theoretically, some columns could be cut out like the "contractSymbol" or "contractSize" to save some storage space. But in the event that this data becomes relevant in the future, it was decided to keep it, at the expense of a few kilobytes per day.</p>
+		<p>This table contains </p>
 		<p>Vivamus rhoncus nisi nulla. Vestibulum venenatis sed leo a lobortis. In non malesuada mi, non elementum neque. Curabitur libero orci, ultricies eu lectus non, accumsan fringilla tellus. Fusce congue tempus nibh porttitor ornare. Cras non porttitor eros. Donec vitae nibh vitae lectus vehicula imperdiet quis eu sem. Donec blandit pellentesque dictum.</p>
 	</div>
 		
