@@ -8,9 +8,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 	<link rel="stylesheet" href="css/index.css" >
 	<link rel="stylesheet" href="css/navbar.css" >
 	<link rel="stylesheet" href="css/footer.css" >
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 </head>
 
@@ -66,11 +68,11 @@
   <div class="container">
     <h2 class="text-center">My Projects</h2>
     <div class="row">
-      <div class="col-md-12">
+      <div data-aos="fade-up" class="col-md-12">
         <div class="card">
-		<a href="project-options.html">
-          <img class="card-img-top" src="images/option-data-function.PNG" alt="Project storing option data">
-		</a>
+		      <a href="project-options.html">
+                <img class="card-img-top" src="images/option-data-function.PNG" alt="Project storing option data">
+		      </a>
           <div class="card-body">
             <h5 class="card-title">Stock option data storage and processing</h5>
             <p class="card-text">A project whose goal is to store data for 3,500 symbols, including all NYSE, NASDAQ, and AMEX listed stocks, the top 500 ETFs by market cap, and other major global companies.</p>
@@ -139,6 +141,9 @@
   </div>
 </footer>
 
+<script>
+  AOS.init();
+</script>
 
 </body>
 </html>
