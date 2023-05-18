@@ -79,28 +79,62 @@
  <div class="container">
     <div class="row">
 	<div class="col-md-12">
-		<p>This whole project started when I wanted to find option price data to backtest an earnings strategy. SoFi seemed to be a prime target for short-strangles/iron condors, due to its implied move historically being significantly higher than its realized move, and being a high IV stock, premiums looked attractive. This strategy needed to be put to the test. I consulted MarketChameleon, my favorite website for such data, but while it was possible to get some data about historical implied vs. realized moves, the actual numbers were locked behind a 99$/month paywall. I then tried to get historical option data using the yfinance python library, but to no avail, only current prices are available. The solution then seemed clear: create a program that would fetch option data after every market close and store it, which could then be consulted whenever needed. This was about 3 weeks before SoFi's upcoming earnings (May 1st 2023), and a deadline was set for 2 days before their earnings, as to not miss this earnings cycle.</p>
-        <li class="list-topper">This project would be split into 3 parts:</li>
-	  <li>a program capable of fetching option data and storing it</li>
-		<li>a device running 24/7 physically storing the data, accessible from anywhere, which would run after each market close</li>
-		<li>a program capable of accessing the aforementionned device, which would parse the data and be responsible for displaying it in a presentable and concise manner</li>
+		<p>This project started when I was looking for data to evaluate a particular earnings strategy. SoFi, a particularly high IV stock which I had made good profits on before (>50% during the January-February 2023 rally), looked like a profitable stock to sell vega on. From the free sources I was able to access, its implied move has been historically significantly higher than its realized move, and its high IV nature made premiums particularly attractive. However, when trying to access actual figures to determine the best DTEs and strikes, that data was locked behind a $99 per month paywall, something that I was not willing to pay for considering the relatively small size of my portfolio, which would have wiped out all the potential profits from the strategy. </p>
+		<p>Confident in my programming skills, I then decided to create a script that would gather data from certain companies, which I could then use to perform analyses in the future. I also had a clear idea of what was needed to create such a program, having created finance-related data projects in the past, like a portfolio analysis program, which would compare one’s performance relative to a symbol of the user’s choice when given a transaction log.</p>
+        <li class="list-topper">I therefore gave myself some clear goals for this project:</li>
+	  <li>To fulfill the original intent of the project, it would need to be completed within 2 weeks time, needing to be ready at least a few days before SoFi’s earnings (May 1st 2023)</li>
+		<li>Be highly scalable: the program needs to work whether I want it to get data for 30 or 3,000 symbols</li>
+		<li>Have a user interface. No more running programs in a Jupyter Notebook and generating graphs that way, I wanted to learn how to have a GUI so the data would be accessible everywhere regardless of its code-running abilities: my laptop, desktop, or phone.</li>
+		<li class="list-bottom">Have it run on auto-pilot. I shouldn’t have to manually execute the program every evening.</li>
 	</div>
       <div class="col-md-6">
-        <img src="images/option-data-function.PNG" class="img-wrap" alt="python function storing option data">
+          <p>I first had to determine a few technical aspects related to data storage. What file format should I use? Where would these files be stored? How should I structure my folders and files? Having some past experience with pandas, a python library, and knowing it had an easy way of storing and accessing data through .csv files, it was decided this is the format that would be used. However, as of May 17th, I am currently in the process of changing the file format to parquet for more efficient storage and faster access. </p>
+          <p>For the file structure, after much experimentation, it seemed that storing each expiration date’s data into its own file seemed the easiest, one each for puts and calls, stored into one folder per symbol, and one folder per day (see image below). While it leads to a ton of files for each symbol, it functionally doesn’t matter since the data is going to be retrieved by a computer which doesn’t care much about going down multiple folders to fetch a file. The upside is a consistent structure allows for easier debugging should a problem arise, and less headaches when manually looking for a file. It also means when data is accessed, only one table has to be loaded, instead of all that day’s data. </p>
       </div>
 	
       <div class="col-md-6">
-       	<p>The first order of business was a function that would accept a stock symbol and save all the data necessary. The first decision to make was how to store said data. The original intent was to create one csv file per day, with each column's header being the expiry date, and the corresponding data being stored in a singular cell beneath the header cell. This was done with the belief that saving a singular file would save on storage and processing speed. However, during testing it was found that when trying to access the data, python couldn't unpack the data properly, displaying mess of text instead of a full table. The decision was then made to instead store each expiry date's data in its own file, one for calls and one for puts, which looks like this.</p>
-		  <img src="images/option-file-structure.PNG" alt="image illustrating file structure">
+		  <img src="images/option-file-structure.PNG" class="padding" alt="image illustrating file structure">
+		  <p>For example, if I wanted to see the closing price on May 7th for the SPY $415 call expiring May 12th 2023, the program only needs to access the file containing data for that specific expiration date and option type. No need to load data for the May 19th expiration, or that day’s puts. This leads to significantly lower access times especially for high volume symbols, which may have 20 expiration dates at any time, at the expense of some storage and speed when gathering the data.</p>
       </div>
 	<div class="col-md-12">
-		<p>These files contain all the data yfinance returns, an example can be found below:</p>
-		<img src="images/option-data-table.PNG" class="img-wrap" alt="table showing standard data format">
+		<p>Below, you can find a typical table containing the data for a single expiration date:</p>
+		<img src="images/option-data-table.PNG" alt="table showing standard data format">
 	    <p>Theoretically, some columns could be cut out like the "contractSymbol" or "contractSize" to save some storage space. But in the event that this data becomes relevant in the future, it was decided to keep it, at the expense of a few kilobytes per day.</p>
-		<p>This table contains </p>
-		<p>Vivamus rhoncus nisi nulla. Vestibulum venenatis sed leo a lobortis. In non malesuada mi, non elementum neque. Curabitur libero orci, ultricies eu lectus non, accumsan fringilla tellus. Fusce congue tempus nibh porttitor ornare. Cras non porttitor eros. Donec vitae nibh vitae lectus vehicula imperdiet quis eu sem. Donec blandit pellentesque dictum.</p>
 	</div>
-		
+		<div class="col-md-12">
+		  <h2>The backend code:</h2>
+		</div>
+		<div class="col-lg-6">
+		  <li class="list-topper">The program was made using python, including a few libraries, the main ones being:</li>
+		  <li>yfinance, fetches price data using the YahooFinance API</li>
+		  <li>pandas, for easy data processing, storage, and access</li>
+		  <li>datetime, for consistent and easy date manipulation</li>
+		  <li>plotly, for interactive graph generation</li>
+		  <li class="list-bottom">os, for folder manipulation and creation</li>
+		  <p>I also used numpy for its numpy.where() function when trying to find the index of a particular strike price, and tqdm to generate a progress bar and estimated completion time, but these latter two libraries had a much more reduced role compared to the other five.
+      </p>
+      <p>Next is the option data gathering function. We pass it a particular ticker, and a global variable “date”, which is just today’s date. It then generates a tuple containing all the expiration dates for that ticker. The program then loops over each expiration date, and fetches the call and put data separately. It then checks if the folder it is trying to store the data in exists, if not the folder is created using the os library to avoid an error. As mentioned earlier, the program stores everything in a main folder named “csvs”, then each symbol has its own folder, and inside said folder each day we create a new one containing that day’s data. Since the directory stays the same throughout, we assign a variable “directory” to avoid recalculating the path everything it is invoked. If there is either no put or call data, the program forgoes storing them, to avoid unnecessary processing and storage.
+</p>
+		</div>
+		<div class="col-lg-6">
+		  <img src="images/option-data-function2.png" class="wlim-576">
+		  <p class="img-title">The function used to gather a ticker's option data:<p>
+		</div>
+		<div class="col-md-12">
+		  <p>Sometimes, during the first experimentation phase, the program would throw an error for no apparent reason, since when manually re-run, the ticker that threw the error would store the data just fine. As a simple work around, a try/except loop was added, where if an error was thrown for any reason, the function would print what symbol was at fault, and switch the “error” variable from False to True.</p>
+		</div>
+		<div class="col-xl-6">
+		  <img src="images/option-loop.png" class="wlim-576">
+		</div>
+		<div class="col-xl-6">
+		  <p>Here we can see the loop that generates the data for each symbol. “tickers” is a list loaded from a csv file of all the symbols the program should go over. For each ticker, the previous optionData() function is called, and if the error value it returns is True, the symbol is stored in another list named “errorLog” for further processing.</p>
+		</div>
+		<div class="col-xl-6">
+      <p>When all the symbols have been run through the storage function, the program goes through the errorLog that was previously generated. For each symbol in the errorLog, the program attempts to run them again, in the hopes that the first error was a fluke. If the function runs successfully, that symbol is removed from the errorLog. If not, after all the symbols have been run through, the program attempts to run the symbols again. After the maxErrorAttempts have been reached, which is currently set at 5, or if the errorLog contains no symbols, the program stops trying to avoid an infinite while loop. </p>
+    </div>
+    <div class="col-xl-6">
+      <img src="images/error-handling-loop.png" class="wlim-576">
+      <img src="images/log-writing-code.png" class="wlim-576">
     </div>
   </div>
 

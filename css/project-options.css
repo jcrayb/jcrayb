@@ -4,3 +4,35 @@
 .list-topper{
 	list-style-type: none;
 }
+.list-bottom{
+  padding-bottom:5px;
+}
+
+.img-title{
+  text-decoration:underline;
+  font-style:italic;
+  text-align:center;
+}
+
+.padding{
+  padding-bottom: 5px;
+}
+
+.wlim-576{
+  max-width:576px;
+  margin:auto;
+  display:block;
+}
+
+div{
+  padding-bottom: 10px;
+}
+
+img{
+  width:100%;
+}
+
+div p{
+  text-align:justify;
+}
+
