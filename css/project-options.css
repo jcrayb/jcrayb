@@ -33,3 +33,14 @@ div p{
   text-align:justify;
 }
 
+h2{
+	text-decoration:underline;
+	padding-bottom:10px;
+}
+
+hr{
+	width:20%;
+   border: none;
+   height: 1px;
+   background-color: #666;
+}
