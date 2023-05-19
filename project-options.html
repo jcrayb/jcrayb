@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html><head>
+<html>
+<head>
   <title>Chris Raymond-Bertrand</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -10,22 +11,12 @@
 	<link rel="stylesheet" href="css/navbar.css">
 	<link rel="stylesheet" href="css/project-options.css">
 	<link rel="stylesheet" href="css/footer.css">
-<style>
-		.img-wrap {
-      float: left;
-      margin-right: 10px;
-      margin-bottom: 10px;
-      max-width: 100%;
-    }
-
-	</style>
 </head>
 
 <body>
 
-  <!-- Navbar -->
-  <!-- Navbar -->
-<!-- Navbar -->
+
+
   <nav class="navbar navbar-expand-md navbar-dark">
     <a href="index.html" class="navbar-brand">Chris Raymond-Bertrand</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
@@ -46,8 +37,7 @@
                 <a class="nav-link" href="#">Contact</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Language
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languageDropdown">
@@ -65,13 +55,12 @@
     </div>
 </nav>
 
+
+
+
+
+
 	
-	
-	
-	
-	
-	
-  <!-- Hero Section -->
   <div class="jumbotron text-center">
     <h1>This page is a Work In Progress</h1>
   </div>
@@ -85,7 +74,7 @@
 	  <li>To fulfill the original intent of the project, it would need to be completed within 2 weeks time, needing to be ready at least a few days before SoFi’s earnings (May 1st 2023)</li>
 		<li>Be highly scalable: the program needs to work whether I want it to get data for 30 or 3,000 symbols</li>
 		<li>Have a user interface. No more running programs in a Jupyter Notebook and generating graphs that way, I wanted to learn how to have a GUI so the data would be accessible everywhere regardless of its code-running abilities: my laptop, desktop, or phone.</li>
-		<li class="list-bottom">Have it run on auto-pilot. I shouldn’t have to manually execute the program every evening.</li>
+		<li class="padding-20">Have it run on auto-pilot. I shouldn’t have to manually execute the program every evening.</li>
 	</div>
       <div class="col-md-6">
           <p>I first had to determine a few technical aspects related to data storage. What file format should I use? Where would these files be stored? How should I structure my folders and files? Having some past experience with pandas, a python library, and knowing it had an easy way of storing and accessing data through .csv files, it was decided this is the format that would be used. However, as of May 17th, I am currently in the process of changing the file format to parquet for more efficient storage and faster access. </p>
@@ -93,12 +82,13 @@
       </div>
 	
       <div class="col-md-6">
-		  <img src="images/option-file-structure.PNG" class="padding" alt="image illustrating file structure">
+		  <img src="images/option-file-structure.PNG" alt="image illustrating file structure">
+		  <p class="img-title">Example file structure:</p>
 		  <p>For example, if I wanted to see the closing price on May 7th for the SPY $415 call expiring May 12th 2023, the program only needs to access the file containing data for that specific expiration date and option type. No need to load data for the May 19th expiration, or that day’s puts. This leads to significantly lower access times especially for high volume symbols, which may have 20 expiration dates at any time, at the expense of some storage and speed when gathering the data.</p>
       </div>
 	<div class="col-md-12">
 		<p>Below, you can find a typical table containing the data for a single expiration date:</p>
-		<img src="images/option-data-table.PNG" alt="table showing standard data format">
+		<img src="images/option-data-table.PNG" alt="table showing standard data format" class="padding-10">
 	    <p>Theoretically, some columns could be cut out like the "contractSymbol" or "contractSize" to save some storage space. But in the event that this data becomes relevant in the future, it was decided to keep it, at the expense of a few kilobytes per day.</p>
 	</div>
 		<div class="col-md-12">
@@ -110,8 +100,8 @@
 		  <li>pandas, for easy data processing, storage, and access</li>
 		  <li>datetime, for consistent and easy date manipulation</li>
 		  <li>plotly, for interactive graph generation</li>
-		  <li class="list-bottom">os, for folder manipulation and creation</li>
-		  <p>I also used numpy for its numpy.where() function when trying to find the index of a particular strike price, and tqdm to generate a progress bar and estimated completion time, but these latter two libraries had a much more reduced role compared to the other five.
+		  <li class="padding-10">os, for folder manipulation and creation</li>
+		  <p>Numpy was also used for its numpy.where() function when trying to find the index of a particular strike price, and tqdm to generate a progress bar and estimated completion time, but these latter two libraries had a much more reduced role compared to the other five.
       </p>
       <p>Next is the option data gathering function. We pass it a particular ticker, and a global variable “date”, which is just today’s date. It then generates a tuple containing all the expiration dates for that ticker. The program then loops over each expiration date, and fetches the call and put data separately. It then checks if the folder it is trying to store the data in exists, if not the folder is created using the os library to avoid an error. As mentioned earlier, the program stores everything in a main folder named “csvs”, then each symbol has its own folder, and inside said folder each day we create a new one containing that day’s data. Since the directory stays the same throughout, we assign a variable “directory” to avoid recalculating the path everything it is invoked. If there is either no put or call data, the program forgoes storing them, to avoid unnecessary processing and storage.
 </p>
@@ -124,7 +114,7 @@
 		  <p>Sometimes, during the first experimentation phase, the program would throw an error for no apparent reason, since when manually re-run, the ticker that threw the error would store the data just fine. As a simple work around, a try/except loop was added, where if an error was thrown for any reason, the function would print what symbol was at fault, and switch the “error” variable from False to True.</p>
 		</div>
 		<div class="col-xl-6">
-		  <img src="images/option-loop.png" class="wlim-576">
+		  <img src="images/option-loop.png" class="wlim-576 padding-20">
 		</div>
 		<div class="col-xl-6">
 		  <p>Here we can see the loop that generates the data for each symbol. “tickers” is a list loaded from a csv file of all the symbols the program should go over. For each ticker, the previous optionData() function is called, and if the error value it returns is True, the symbol is stored in another list named “errorLog” for further processing.</p>
@@ -135,11 +125,11 @@
     <div class="col-xl-6">
       <img src="images/error-handling-loop.png" class="wlim-576">
       <img src="images/log-writing-code.png" class="wlim-576">
+      <p class="img-title"></p>
+    </div>
     </div>
   </div>
 
-	
-	
 	
 	
 	
@@ -156,7 +146,7 @@
         </ul>
       </div>
 		<div class="col-md-6">
-        <h3 class="footer-heading">Credits</h3>
+        <h3 class="footer-heading">Credits:</h3>
         <ul class="footer-list">
           <li><a href="https://www.flaticon.com/free-icons/france" title="france icons">France flag icon created by Freepik - Flaticon</a></li>
           <li><a href="https://www.flaticon.com/free-icons/united-states" title="united-states icons">United-States flag icon created by Freepik - Flaticon</a></li>
@@ -165,7 +155,6 @@
     </div>
   </div>
 </footer>
-
 
 
 
