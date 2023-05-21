@@ -10,7 +10,7 @@
   </style>
 </head>
 <body>
-	<!-- Navbar -->
+
 <nav class="navbar navbar-expand-md navbar-dark">
     <a href="index.html" class="navbar-brand">Chris Raymond-Bertrand</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
@@ -76,13 +76,13 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Rows will be added dynamically from the CSV file -->
+        
       </tbody>
     </table>
   </div>
 
   <script>
-    // JavaScript code for fetching CSV and populating the table
+    
     fetch('https://jcrayb.com/csv/killcount.csv')
       .then(response => response.text())
       .then(data => {
@@ -92,7 +92,7 @@
           let row = document.createElement('tr');
           let cells = rows[i].split(',');
           for (let j = 0; j < cells.length; j++) {
-            let cell = document.createElement(i === 0 ? 'th' : 'td'); // Use th for header row, td for other rows
+            let cell = document.createElement(i === 0 ? 'th' : 'td'); 
             cell.textContent = cells[j];
             row.appendChild(cell);
           }
@@ -112,7 +112,7 @@
           contestants.push(contestant);
         }
 
-        // Sort contestants by kill count in descending order
+       
         contestants.sort(function(a, b) {
           return b.killCount - a.killCount;
         });
