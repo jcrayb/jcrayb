@@ -39,6 +39,7 @@
   position: relative;
   flex-basis: 50%;
   margin-left: 70px;
+  width:100%;
 }
 
 .timeline .timeline-heading {
@@ -105,6 +106,7 @@
     max-height: 50%;
     border-radius: 4px;
     margin-bottom: 20px; /* Remove margin at bottom to eliminate space between image and text */
+    display:none;
   }
   
   .timeline .timeline-heading {

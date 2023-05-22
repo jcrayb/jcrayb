@@ -14,53 +14,8 @@
 </head>
 
 <body>
+<script src="nav.js"></script>
 
-
-
-  <nav class="navbar navbar-expand-md navbar-dark">
-    <a href="index.html" class="navbar-brand">Chris Raymond-Bertrand</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a href="index.html" class="nav-link">Home</a>
-            </li>
-			<li class="nav-item active">
-                <a href="directory.html" class="nav-link">Directory</a>
-            </li>
-            <li class="nav-item">
-                <a href="about.html" class="nav-link">About me</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Language
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languageDropdown">
-                    <a class="dropdown-item" href="#">
-                        <img src="images/usa.png" alt="English" class="flag-icon">
-                        English
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <img src="images/fra.png" alt="French" class="flag-icon">
-                        French
-                    </a>
-                </div>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-
-
-
-
-
-	
   <div class="jumbotron text-center">
     <h1>This page is a Work In Progress</h1>
 	<h4>A few sections are still missing.</h4>
@@ -92,13 +47,13 @@
       </div>
 	
       <div class="col-md-6">
-		  <img src="images/option-file-structure.PNG" alt="image illustrating file structure">
+		  <img src="images/project-options/option-file-structure.PNG" alt="image illustrating file structure">
 		  <p class="img-title">Example file structure:</p>
 		  <p>For example, if I wanted to see the closing price on May 7th for the SPY $415 call expiring May 12th 2023, the program only needs to access the file containing data for that specific expiration date and option type. No need to load data for the May 19th expiration, or that day’s puts. This leads to significantly lower access times especially for high volume symbols, which may have 20 expiration dates at any time, at the expense of some storage and speed when gathering the data.</p>
       </div>
 	<div class="col-md-12">
 		<p>Below, you can find a typical table containing the data for a single expiration date:</p>
-		<img src="images/option-data-table.PNG" alt="table showing standard data format" class="padding-10">
+		<img src="images/project-options/option-data-table.PNG" alt="table showing standard data format" class="padding-10">
 	    <p>Theoretically, some columns could be cut out like the "contractSymbol" or "contractSize" to save some storage space. But in the event that this data becomes relevant in the future, it was decided to keep it, at the expense of a few kilobytes per day.</p>
 	</div>
 		<hr>
@@ -117,14 +72,14 @@
       <p>Next is the option data gathering function. We pass it a particular ticker, and a global variable “date”, which is just today’s date. It then generates a tuple containing all the expiration dates for that ticker. The program then loops over each expiration date, and fetches the call and put data separately. It then checks if the folder it is trying to store the data in exists, if not the folder is created using the os library to avoid an error. As mentioned earlier, the program stores everything in a main folder named “csvs”, then each symbol has its own folder, and inside said folder each day we create a new one containing that day’s data. Since the directory stays the same throughout, we assign a variable “directory” to avoid recalculating the path everything it is invoked. If there is either no put or call data, the program forgoes storing them, to avoid unnecessary processing and storage.</p>
 		</div>
 		<div class="col-lg-6">
-		  <img src="images/option-data-function2.png" class="wlim-576">
+		  <img src="images/project-options/option-data-function2.png" class="wlim-576">
 		  <p class="img-title">The function used to gather a ticker's option data:</p>
 		</div>
 		<div class="col-md-12">
 		  <p>Sometimes, during the first experimentation phase, the program would throw an error for no apparent reason, since when manually re-run, the ticker that threw the error would store the data just fine. As a simple work around, a try/except loop was added, where if an error was thrown for any reason, the function would print what symbol was at fault, and switch the “error” variable from False to True.</p>
 		</div>
 		<div class="col-xl-6">
-		  <img src="images/option-loop.png" class="wlim-576 padding-20">
+		  <img src="images/project-options/option-loop.png" class="wlim-576 padding-20">
 		</div>
 		<div class="col-xl-6">
 		  <p>Here we can see the loop that generates the data for each symbol. “tickers” is a list loaded from a csv file of all the symbols the program should go over. For each ticker, the previous optionData() function is called, and if the error value it returns is True, the symbol is stored in another list named “errorLog” for further processing.</p>
@@ -134,8 +89,8 @@
 	<p>Finally, the program finished by writing a log containing the start &amp; end times, as well as any symbols remaining in the errorLog. Even with 4,700 tickers, so far no log has contained any symbols for which data couldn’t be stored, a testimony to the error handling’s robustness.</p>
     </div>
     <div class="col-xl-6">
-      <img src="images/error-handling-loop.png" class="wlim-576">
-      <img src="images/log-writing-code.png" class="wlim-576">
+      <img src="images/project-options/error-handling-loop.png" class="wlim-576">
+      <img src="images/project-options/log-writing-code.png" class="wlim-576">
       <p class="img-title"></p>
     </div>
 	<hr>
@@ -147,11 +102,11 @@
 		<p>There were also other considerations hardware-wise. Cooling was one of them; if the system were to stay on for 24 hours a day as planned, there is no period where the processing chip on the SBC is not running and therefore cooling itself down. Thankfully, the board manufacturer also sells a heatsink that can easily be installed using pre-drilled holes. A fan was also bought to provide air-flow, which raised the question, where is the fan going to go? Simply placing it on top of the board was not really an option for a multitude of reasons, and so some standoffs were needed. Ideally, there would also be a compartment for the hard-drive to slot in below, to reduce the space needed for the whole system, and take advantage of the cooling provided by the fan. An enclosure was then designed in Fusion 360, with a top-plate containing pegs for the board to slot into, while also removing as much material as possible to save on cost and allow for airflow to the hard-drive bay below. I then bought some bolts from Walmart to act as standoffs, as they were less expensive and more reliable than 3D printing them would have been.</p>
 	</div>
 	<div class="col-md-6">
-		<img src="images/CAD-fusion-fit.png" class="cad-pics">
+		<img src="images/project-options/CAD-fusion-fit.png" class="cad-pics">
 		<p class="img-title">Final enclosure design inside Fusion 360:</p>
 	</div>
 	<div class="col-md-6">
-		<img src="images/CAD-picture-fit.png" class="cad-pics">
+		<img src="images/project-options/CAD-picture-fit.png" class="cad-pics">
 		<p class="img-title">Final assembly (note: hard-drive bay has yet to be printed):</p>
 	</div>
     </div>

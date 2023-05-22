@@ -58,3 +58,8 @@ a{
 a:hover{
 	color:black;
 }
+
+nav{
+  position:absolute;
+  top:0px;
+}
