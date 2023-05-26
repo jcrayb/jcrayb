@@ -6,6 +6,9 @@
   background-color: #333; /* Set background color */
   padding-top:40px; /* Add top padding */
 	color: white;
+	position:absolute;
+	bottom:0px;
+	width:100%;
 }
 
 .footer-heading {
