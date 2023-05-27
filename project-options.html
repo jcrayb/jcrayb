@@ -27,9 +27,22 @@
 	<div class="col-md-12" id="content-table">
 		<h2>Table of contents:</h2>
 		<ol type="I">
-			<a href="#intro"><h4><li>Introduction</li></h4></a>
-			<a href="#backend"><h4><li>The backend code</li></h4></a>
-			<a href="#hardware"><h4><li>The hardware</li></h4></a>
+			<h4><li><a href="#intro">Introduction</h4></a>
+			        <ul>Motivations</ul>
+			        <ul>Goals</ul>
+			        </li>
+			
+			<h4><li><a href="#hardware">The hardware</h4></a>
+			        <ul>Computing board</ul>
+			        <ul>Storage</ul>
+			        <ul>Cooling</ul>
+			        </li>
+			
+
+			<h4><li><a href="#backend">The backend</h4></a>
+			        <ul>Database</ul>
+			        <ul>Data-gathering code</ul>
+			        </li>
 		</ol>
 	</div>
 	<div class="col-md-12">
@@ -42,11 +55,30 @@
 		<li>Have a user interface. No more running programs in a Jupyter Notebook and generating graphs that way, I wanted to learn how to have a GUI so the data would be accessible everywhere regardless of its code-running abilities: my laptop, desktop, or phone.</li>
 		<li class="padding-20">Have it run on auto-pilot. I shouldn’t have to manually execute the program every evening.</li>
 	</div>
-      <div class="col-md-6">
+      
+		<hr>
+	<div class="col-md-12">
+		<h2 id="hardware">The hardware:</h2>
+		<p>Since one of the project’s goals is to run automatically, it became clear early on that it would require a separate computing unit that could run a script at set times. I would also need a means of storage that could connect to the computer and store files as needed. Thankfully, I brought an old 2TB hard-drive to campus in the chance that it would be needed for a project, so the storage was taken care of. I then began looking for a Single Board Computer (SBC), as their compact nature and low power requirements seemed like a perfect fit. I looked for Raspberry Pi’s as they were the most renowned and being an outsider to the world of SBCs they were the only product family I had heard of. Unfortunately, they seem to be still suffering from supply issues, leading them to be not only scarce, but also offered from three to five times their MSRP, so it was a hard pass. After some research, the Libre Computing “Renegade” seemed to check all the boxes while also sporting the most reasonable price of all comparable SBCs at $40 for the 2GB of RAM version. </p>
+		<p>To reduce the load on the computer as much as possible, the choice of OS was Debian Linux, a command-line only operating system which is as barebones as it gets. OpenMediaVault was also installed, which gave Network Attached Storage capabilities to the computer. This allowed remote access to the files stored on the board through the file explorer on Windows or Fedora Linux (which I use on my laptop) through SMB.</p>
+		<p>Finally, since I do not have admin access to my router at my on-campus apartment, I am not able to perform port-forwarding, which would allow access to the SBC outside of my home network. To circumvent this limitation, ZeroTier was installed on every machine that needed access to the files. ZeroTier is essentially a VPN that allows every device to connect to a single server, and act as if said devices were on the same network. This now allowed me to connect remotely to my mini-server from anywhere on campus, and theoretically anywhere in the world, although I haven’t put that to the test just yet. This also allows me to SSH into the mini-server at any time and run commands as needed, allowing me to debug if necessary.</p>
+		<p>There were also other considerations hardware-wise. Cooling was one of them; if the system were to stay on for 24 hours a day as planned, there is no period where the processing chip on the SBC is not running and therefore cooling itself down. Thankfully, the board manufacturer also sells a heatsink that can easily be installed using pre-drilled holes. A fan was also bought to provide air-flow, which raised the question, where is the fan going to go? Simply placing it on top of the board was not really an option for a multitude of reasons, and so some standoffs were needed. Ideally, there would also be a compartment for the hard-drive to slot in below, to reduce the space needed for the whole system, and take advantage of the cooling provided by the fan. An enclosure was then designed in Fusion 360, with a top-plate containing pegs for the board to slot into, while also removing as much material as possible to save on cost and allow for airflow to the hard-drive bay below. I then bought some bolts from Walmart to act as standoffs, as they were less expensive and more reliable than 3D printing them would have been.</p>
+	</div>
+	<div class="col-md-6">
+		<img src="images/project-options/CAD-fusion-fit.png" class="cad-pics">
+		<p class="img-title">Final enclosure design inside Fusion 360:</p>
+	</div>
+	<div class="col-md-6">
+		<img src="images/project-options/CAD-picture-fit.png" class="cad-pics">
+		<p class="img-title">Final assembly (note: hard-drive bay has yet to be printed):</p>
+	</div>
+			<div class="col-md-12">
+		  <h2 id="backend">The backend:</h2>
+		</div>
+		<div class="col-md-6">
           <p>I first had to determine a few technical aspects related to data storage. What file format should I use? Where would these files be stored? How should I structure my folders and files? Having some past experience with pandas, a python library, and knowing it had an easy way of storing and accessing data through .csv files, it was decided this is the format that would be used. However, as of May 17th, I am currently in the process of changing the file format to parquet for more efficient storage and faster access. </p>
           <p>For the file structure, after much experimentation, it seemed that storing each expiration date’s data into its own file seemed the easiest, one each for puts and calls, stored into one folder per symbol, and one folder per day (see image below). While it leads to a ton of files for each symbol, it functionally doesn’t matter since the data is going to be retrieved by a computer which doesn’t care much about going down multiple folders to fetch a file. The upside is a consistent structure allows for easier debugging should a problem arise, and less headaches when manually looking for a file. It also means when data is accessed, only one table has to be loaded, instead of all that day’s data. </p>
       </div>
-	
       <div class="col-md-6">
 		  <img src="images/project-options/option-file-structure.PNG" alt="image illustrating file structure">
 		  <p class="img-title">Example file structure:</p>
@@ -57,10 +89,6 @@
 		<img src="images/project-options/option-data-table.PNG" alt="table showing standard data format" class="padding-10">
 	    <p>Theoretically, some columns could be cut out like the "contractSymbol" or "contractSize" to save some storage space. But in the event that this data becomes relevant in the future, it was decided to keep it, at the expense of a few kilobytes per day.</p>
 	</div>
-		<hr>
-		<div class="col-md-12">
-		  <h2 id="backend">The backend code:</h2>
-		</div>
 		<div class="col-lg-6">
 		  <li class="list-topper">The program was made using python, including a few libraries, the main ones being:</li>
 		  <li>yfinance, fetches price data using the YahooFinance API</li>
@@ -95,23 +123,9 @@
       <p class="img-title"></p>
     </div>
 	<hr>
-	<div class="col-md-12">
-		<h2 id="hardware">The hardware:</h2>
-		<p>Since one of the project’s goals is to run automatically, it became clear early on that it would require a separate computing unit that could run a script at set times. I would also need a means of storage that could connect to the computer and store files as needed. Thankfully, I brought an old 2TB hard-drive to campus in the chance that it would be needed for a project, so the storage was taken care of. I then began looking for a Single Board Computer (SBC), as their compact nature and low power requirements seemed like a perfect fit. I looked for Raspberry Pi’s as they were the most renowned and being an outsider to the world of SBCs they were the only product family I had heard of. Unfortunately, they seem to be still suffering from supply issues, leading them to be not only scarce, but also offered from three to five times their MSRP, so it was a hard pass. After some research, the Libre Computing “Renegade” seemed to check all the boxes while also sporting the most reasonable price of all comparable SBCs at $40 for the 2GB of RAM version. </p>
-		<p>To reduce the load on the computer as much as possible, the choice of OS was Debian Linux, a command-line only operating system which is as barebones as it gets. OpenMediaVault was also installed, which gave Network Attached Storage capabilities to the computer. This allowed remote access to the files stored on the board through the file explorer on Windows or Fedora Linux (which I use on my laptop) through SMB.</p>
-		<p>Finally, since I do not have admin access to my router at my on-campus apartment, I am not able to perform port-forwarding, which would allow access to the SBC outside of my home network. To circumvent this limitation, ZeroTier was installed on every machine that needed access to the files. ZeroTier is essentially a VPN that allows every device to connect to a single server, and act as if said devices were on the same network. This now allowed me to connect remotely to my mini-server from anywhere on campus, and theoretically anywhere in the world, although I haven’t put that to the test just yet. This also allows me to SSH into the mini-server at any time and run commands as needed, allowing me to debug if necessary.</p>
-		<p>There were also other considerations hardware-wise. Cooling was one of them; if the system were to stay on for 24 hours a day as planned, there is no period where the processing chip on the SBC is not running and therefore cooling itself down. Thankfully, the board manufacturer also sells a heatsink that can easily be installed using pre-drilled holes. A fan was also bought to provide air-flow, which raised the question, where is the fan going to go? Simply placing it on top of the board was not really an option for a multitude of reasons, and so some standoffs were needed. Ideally, there would also be a compartment for the hard-drive to slot in below, to reduce the space needed for the whole system, and take advantage of the cooling provided by the fan. An enclosure was then designed in Fusion 360, with a top-plate containing pegs for the board to slot into, while also removing as much material as possible to save on cost and allow for airflow to the hard-drive bay below. I then bought some bolts from Walmart to act as standoffs, as they were less expensive and more reliable than 3D printing them would have been.</p>
-	</div>
-	<div class="col-md-6">
-		<img src="images/project-options/CAD-fusion-fit.png" class="cad-pics">
-		<p class="img-title">Final enclosure design inside Fusion 360:</p>
-	</div>
-	<div class="col-md-6">
-		<img src="images/project-options/CAD-picture-fit.png" class="cad-pics">
-		<p class="img-title">Final assembly (note: hard-drive bay has yet to be printed):</p>
-	</div>
     </div>
   </div>
+  
 
 	
 	
