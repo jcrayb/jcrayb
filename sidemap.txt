@@ -1,0 +1,16 @@
+jcrayb.com/
+jcrayb.com/index.html
+jcrayb.com/directory.html
+jcrayb.com/project-options.html
+jcrayb.com/about.html
+options.jcrayb.com/
+options.jcrayb.com/user/settings
+options.jcrayb.com/user/transactions
+options.jcrayb.com/login
+options.jcrayb.com/single/price
+options.jcrayb.com/single/volume
+options.jcrayb.com/single/oi
+options.jcrayb.com/single/volatility
+options.jcrayb.com/spreads
+options.jcrayb.com/getStrikes
+options.jcrayb.com/expirations
