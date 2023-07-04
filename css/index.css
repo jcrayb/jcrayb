@@ -1,6 +1,8 @@
 @charset "utf-8";
-/* CSS Document */
-/* Custom styles for the cards */
+
+
+
+
   .card {
     margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -11,9 +13,9 @@
   .card:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 	  transform: scale(1.03);
-	  
+
   }
-  
+
   .card-anchor:hover{
     text-decoration:none;
   }
@@ -21,7 +23,7 @@
   .card-img-top {
     height: 300px;
     object-fit: cover;
-  }	
+  }
 
   .card-title {
     font-size: 18px;
@@ -63,4 +65,39 @@
 #project-title{
   font-weight:bold;
   text-decoration:underline;
+}
+
+#stackImgContainer{
+  display:flex;
+  align-content: center;
+  flex-wrap: wrap;
+  border-radius: 15px;
+  background-color: #eee;
+    height:100%;
+}
+
+#stackImgContainer img{
+border-radius: 5px;
+width:25%;
+aspect-ratio: 1;
+padding:10px;
+}
+
+.section{
+  padding-bottom:15px;
+}
+
+
+#techStackTxt p{
+  text-align: justify;
+  padding:20px;
+  margin:auto;
+  border-radius: 15px;
+  background-color: #eee;
+  height:100%;
+}
+
+.section .col-md-6{
+    padding:20px;
+  border:10px;
 }

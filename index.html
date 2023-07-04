@@ -3,6 +3,7 @@
 
 <head>
   <title>Chris Raymond-Bertrand</title>
+  <meta name="description" content="Welcome to my personal website! Here you can find information about me & my projects. Heading over to options.jcrayb.com, you will find the home page for my stock-options related data-science and web-development project.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,15 +23,42 @@
 
 <script src="nav.js"></script>
 
-  <div class="jumbotron text-center" style="background-image: url('images/index/background-cmp.png');">
+  <div class="jumbotron text-center" style="background-image: url('images/index/background-cmp.png');" data-aos="zoom-in">
   <div class="jumbotron-overlay">
     <h1>This page is a Work In Progress</h1>
     <p>Click the button to access the website directory, or scroll down for more</p>
     <a class="btn btn-primary" href="directory.html">Directory</a>
   </div>
 	</div>
+
+<div class="container">
+<div class="section">
+  <h2 class="text-center" id="project-title">My tech stack:</h2>
+  <div class="row" >
+    <div class="col-md-6" id="techStackTxt">
+      <p>As the scope of my projects got bigger and bigger, I started learning more specialized technlogies to fill the ever-growing amount of needs. I started with Python as I had some experience using it for a college Computer-Science course. After learning many of its libraries, I started using HTML & CSS to create an interface for my programs. Using Flask, I developed the an early version of what would become my stock-option project, at the time only allowing being accessible from my laptop using a VPN to tunnel to my home-server. Wanting to scale this project, I learned Docker to be capable of deploying my app to Google Cloud Run. I also experimented with Firebase to add authentication to my website as a way to display user specific data like a portfolio graphing program. Most recently, to speed up my database queries, I learned SQL and converted my 20GB worth of CSV files to a single .db file accessed using the SQLite library in Python. Currently, I am in the process of learning Vue.js to add new capabilities to my future and current projects!</p>
+    </div>
+    <div id="techStackImg" class='col-md-6'>
+      <div id="stackImgContainer">
+        <img src="./images/index/slider/python.png" alt="python">
+        <img src="./images/index/slider/sqlite.png" alt="sqlite">
+        <img src="./images/index/slider/flask.png" alt="flask">
+        <img src="./images/index/slider/gcp.png" alt="google cloud platform">
+        <img src="./images/index/slider/docker.png" alt="docker">
+        <img src="./images/index/slider/firebase.png" alt="firebase">
+        <img src="./images/index/slider/js.png" alt="javascript">
+        <img src="./images/index/slider/html.png" alt="html">
+        <img src="./images/index/slider/css.png" alt="css">
+        <img src="./images/index/slider/fedora.png" alt="fedora">
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
   <!-- Projects Section -->
-  <div class="container">
+  <div class="section">
     <h2 class="text-center" id="project-title">My Projects:</h2>
     <div class="row">
       <div data-aos="fade-up" class="col-md-6">
@@ -44,7 +72,7 @@
         </div>
         </a>
       </div>
-      
+
       <div data-aos="fade-up" class="col-md-6">
       <a class="card-anchor" href="project-cloud-storage.html">
         <div class="card">
@@ -58,6 +86,8 @@
 		</div>
 		</a>
 		</div>
+  </div>
+
 		<!--
 	<div class="row">
   <div class="col-md-6">
@@ -82,10 +112,10 @@
   </div>-->
 </div>
 </div>
-	
-	
-	
-	
+
+
+
+
 <footer class="footer py-3">
   <div class="container">
     <div class="row">
