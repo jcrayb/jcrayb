@@ -77,31 +77,50 @@
   border-radius: 4px;
 }
 
+.educationCard{
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.educationCard p{
+  margin-bottom:0px;
+}
+
+#education{
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px 6px rgba(0, 0, 0, 0.1);
+  padding:10px;
+}
+
+.section{
+  margin-bottom:15px;
+}
+
 @media (max-width: 992px) {
   .timeline li {
     flex-direction: column;
     padding: 20px;
   }
-  
+
   .timeline .timeline-panel {
     flex-basis: 100%;
     margin-left: 0;
   }
-  
+
   .timeline .timeline-image {
     flex-basis: 100%;
     max-width: 100%;
     margin-right: auto;
     margin-left: auto;
   }
-  
+
   .timeline .timeline-image img {
     width: auto;
     max-height: 50%;
     border-radius: 4px;
     margin-bottom: 20px; /* Remove margin at bottom to eliminate space between image and text */
   }
-  
+
   .timeline .timeline-heading {
     order: 2; /* Change order of text to appear after image */
   }
