@@ -16,3 +16,5 @@ https://options.jcrayb.com/spreads
 https://options.jcrayb.com/getStrikes
 https://options.jcrayb.com/expirations
 https://me330.jcrayb.com/
+https://f1.jcrayb.com/
+
