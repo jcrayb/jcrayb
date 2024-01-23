@@ -14,24 +14,6 @@ document.write('<nav class="navbar navbar-expand-md navbar-dark">\
             <li class="nav-item">\
                 <a href="about.html" class="nav-link">About me</a>\
             </li>\
-            <li class="nav-item">\
-                <a class="nav-link" href="about.html">Contact</a>\
-            </li>\
-            <li class="nav-item dropdown">\
-                <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">\
-                    Language\
-                </a>\
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languageDropdown">\
-                    <a class="dropdown-item" href="#">\
-                        <img src="icons/usa.png" alt="English" class="flag-icon">\
-                        English\
-                    </a>\
-                    <a class="dropdown-item" href="#">\
-                        <img src="icons/fra.png" alt="French" class="flag-icon">\
-                        French\
-                    </a>\
-                </div>\
-            </li>\
         </ul>\
     </div>\
 </nav>\
