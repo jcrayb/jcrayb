@@ -13,7 +13,35 @@
 	<link rel="stylesheet" href="css/about.css">
 	<link rel="stylesheet" href="css/footer.css">
 
+  <!-- PLOTLY -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
   <script src="icons.js"></script>
+  <script>
+    function resize_image(div, target_height){
+      console.log(target_height);
+      div.setAttribute('style', div.style.height + `height: ${target_height}px`);
+    }
+  </script>
+
+  <script>
+    function fetch_country_graph(){
+      //`
+      fetch(`https://options-api.jcrayb.com/country_graph`, {
+          method: 'GET',
+        })
+          .then(response => response.json())
+          .then(data => {
+              document.getElementById('graph-container').innerHTML = '';
+              transactionGraph = Plotly.newPlot("graph-container", JSON.parse(data['content']), {height:600}, {responsive: true});
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('graph-container').innerHTML = 'An error has occured while loading the graph. Please try again later.';
+          });
+    }
+  </script>
+
 </head>
 
 <body>
@@ -22,26 +50,66 @@
 <div class="container pt-2 pt-md-5">
     <h2><u>Who am I?</u></h2>
   <div class="row section">
-    <div class="col-md-6">
-      <p>My name is Chris Raymond-Bertrand, and I am a student majoring in Industrial Engineering at the University of Illinois Urbana-Champaign. I specialize in Operations Research, which is a field that allows me to combine multiple of my interests like computer-science and optimization all the while having concrete real-world applications.</p>
-      <p>I am a dual national of France and the Czech Republic and have lived in 6 different countries on 3 different continents.</p>
+    <div class="col-md-6" >
+      <div id="text-section">
+        <p>My name is Chris Raymond-Bertrand, and I am a student majoring in Industrial Engineering at the University of Illinois Urbana-Champaign. I specialize in Operations Research, which is a field that allows me to combine multiple of my interests like computer-science and optimization all the while having concrete real-world applications.</p>
+        <p>I am a dual national of France and the Czech Republic and have lived in 6 different countries on 3 different continents.</p>
+        
+        <h4><u>Education:</u></h4>
+          <h5 class="mt-2">School:</h5>
+          <li>University of Illinois Urbana-Champaign</li>
+          <h5 class="mt-2">Major:</h5>
+          <li>Industrial Engineering, with focus in Operations Research</li>
+          <h5 class="mt-2">Honors and awards:</h5>
+          <li>3.93 GPA</li>
+          <li>4 times Dean's list receipient</li>
+      </div>
+      
     </div>
-    <div class="col-md-6">
-      <h4>Education:</h4>
-        <h5>School:</h5>
-        <li>University of Illinois Urbana-Champaign</li>
-        <h5>Major:</h5>
-        <li>Industrial Engineering, with focus in Operations Research</li>
-        <h5>Honors and awards:</h5>
-        <li>3.93 GPA</li>
-        <li>4 times Dean's list receipient</li>
+      <div class="col-md-6 d-flex justify-content-center overflow-hidden">
+        <img src="images/about/winter2.png" class="mt-3 mt-sm-1" alt="Image of myself" onload="resize_image(this, document.getElementById('text-section').clientHeight);">
       </div>
     </div>
+    <h3 class="mb-0"><u>Countries where I've lived:</u></h3>
+    <div class="w-100 d-flex justify-content-center">
+      <div id="graph-container">  
 
+      </div> 
+    </div>
+    
+    <script>fetch_country_graph()</script>
+    
 <h2><u>My career:</u></h2>
 <div class="row section">
     <div class="col-md-12">
       <ul class="timeline">
+        <!-- MECHSE -->
+        <li class="timeline-left">
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-date">January 2024 - Present</h4>
+              <h4 class="timeline-title">Course Assistant, TAM 251: Solid Mechanics</h4>
+              <p class="timeline-subtitle">Illinois Mechanical Science and Engineering Department - Urbana, IL</p>
+            </div>
+            <div class="timeline-body">
+                <p>Conducting office hours and leading discussion sections to provide additional support to students and facilitate in-depth discussions about course materials.</p>
+                <p>Demonstrating strong knowledge of mechanical engineering and solid mechanics concepts and their practical applications.</p>
+            </div>
+
+            <div class="timeline-heading mt-3">
+			      <h4 class="timeline-date">January 2023 - December 2023</h4>
+              <h4 class="timeline-title">Course Assistant, TAM 211: Statics</h4>
+              <p class="timeline-subtitle">Illinois Mechanical Science and Engineering Department - Urbana, IL</p>
+            </div>
+            <div class="timeline-body">
+              <p>Facilitated student learning in introductory Mechanical Engineering class.</p>
+              <p>Encouraged students put to practice their Python skills to solve engineering problems, demonstrating extensive knowledge of the language.</p>
+            </div>
+          </div>
+          <div class="timeline-image">
+            <img src="./images/mechse.png" alt="Illinois MechSE logo">
+          </div>
+        </li>
         <!-- INGEROP -->
         <li class="timeline-right">
           <div class="timeline-image">
@@ -60,29 +128,10 @@
           </div>
           
         </li>
-        <!-- MECHSE -->
-        <li class="timeline-left">
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-			<h4 class="timeline-date">January 2023 - Present</h4>
-              <h4 class="timeline-title">Course Assistant, TAM 211: Statics</h4>
-              <p class="timeline-subtitle">Illinois Mechanical Science and Engineering Department - Urbana, IL</p>
-            </div>
-            <div class="timeline-body">
-              <p>Conducting office hours and led discussion sections to provide additional support to students and facilitate in-depth discussions about course materials.</p>
-				<p>Demonstrating strong knowledge of mechanical engineering concepts and their practical applications.</p>
-				<p>Helping students put to practice their Python skills to solve engineering problems, demonstrating extensive knowledge of the language.</p>
-            </div>
-          </div>
-          <div class="timeline-image">
-            <img src="./images/mechse.png" alt="Illinois MechSE logo">
-          </div>
-        </li>
+        
           <!-- WRC -->
-        <li class="timeline-right">
-          <div class="timeline-image">
-            <img src="./images/wrc.png" alt="WRC logo">
-          </div>
+        <li class="timeline-left">
+          
           <div class="timeline-panel">
             <div class="timeline-heading">
 			  <h4 class="timeline-date">January 2023 - May 2023</h4>
@@ -93,14 +142,10 @@
               	<p>Was in charge of the technical logistics of the university's online sexual assualt prevention program FYCARE. </p>
 				  <p>Hosted Zoom calls, managed attendance records, tracked participation, and insured the overall smoothness of the workshop.</p>
 			  </div>
-			  <div class="timeline-heading">
-			  <h4 class="timeline-date">Starting in August 2023</h4>
-				<h4 class="timeline-title">FYCARE Facilitator</h4>
-              <p class="timeline-subtitle">Illinois Women's Resources Center - Champaign, IL</p>
 		    </div>
-
-		</div>
-
+        <div class="timeline-image">
+          <img src="./images/wrc.png" alt="WRC logo">
+        </div>
         </li>
       </ul>
     </div>
