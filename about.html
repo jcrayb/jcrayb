@@ -33,7 +33,7 @@
           .then(response => response.json())
           .then(data => {
               document.getElementById('graph-container').innerHTML = '';
-              transactionGraph = Plotly.newPlot("graph-container", JSON.parse(data['content']), {height:600}, {responsive: true});
+              transactionGraph = Plotly.newPlot("graph-container", JSON.parse(data['content']), {height:500}, {responsive: true});
           })
           .catch(error => {
             console.error('Error:', error);
@@ -44,7 +44,7 @@
 
 </head>
 
-<body>
+<body class="w-100">
 <script src="nav.js"></script>
 
 <div class="container pt-2 pt-md-5">
@@ -69,13 +69,17 @@
       <div class="col-md-6 d-flex justify-content-center overflow-hidden">
         <img src="images/about/winter2.png" class="mt-3 mt-sm-1" alt="Image of myself" onload="resize_image(this, document.getElementById('text-section').clientHeight);">
       </div>
+      <div class="col-12">
+        <h3 class="mb-0"><u>Countries where I've lived:</u></h3>
+        <div class="w-100 d-flex justify-content-center">
+          <div id="graph-container" class="w-100 d-flex justify-content-center overflow-hidden">  
+  
+          </div> 
+        </div>
+      </div>
+      
     </div>
-    <h3 class="mb-0"><u>Countries where I've lived:</u></h3>
-    <div class="w-100 d-flex justify-content-center">
-      <div id="graph-container">  
-
-      </div> 
-    </div>
+    
     
     <script>fetch_country_graph()</script>
     
@@ -176,7 +180,11 @@
 </footer>
 
 
-
+<script>
+  window.onresize = function(event){
+    Plotly.Plots.resize('graph-container')
+  }
+</script>
 
 	</body>
 	</html>
