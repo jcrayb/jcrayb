@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>How I Ruined F1's Schedule</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Chris Raymond-Bertrand">
+    <meta name="robots" content="noindex">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    
+
+    <script src="https://files.jcrayb.com/files/config/file-sharing/theme.js"></script>
+    <script src="https://files.jcrayb.com/files/config/file-sharing/share.js"></script>
+
+    <link rel="stylesheet" href="./atom-one-dark.css" id="darkTheme" disabled>
+    <link rel="stylesheet" href="./stackoverflow-light.css" id="lightTheme">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .list-group-item a{
+            text-decoration: none;
+            color: black;
+            margin: .25rem;
+        }
+
+        #index .list-group-item{
+            padding-top: .25rem;
+            padding-bottom: .25rem;
+        }
+
+        section{
+            margin-top: 2rem;
+        }
+    </style>
+
+    <script>
+        function fetch_globe(){
+      //`
+      fetch(`https://options-api.jcrayb.com/f1_globe`, {
+          method: 'GET',
+        })
+          .then(response => response.json())
+          .then(data => {
+              document.getElementById('graph-container').innerHTML = '';
+              transactionGraph = Plotly.newPlot("graph-container", JSON.parse(data['content']), {height:500}, {responsive: true});
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('graph-container').innerHTML = 'An error has occured while loading the graph. Please try again later.';
+          });
+    }
+    </script>
+</head>
+<body onload="hljs.highlightAll(); setCodeTheme();  themed_items();" class="pb-5">
+    <div class="container mt-4">
+        <div class="row w-100 mx-0 my-2">
+            <div class="col-md-2 px-1 mt-2 mt-md-0">
+                <button type="button" themed class="btn btn-light btn-sm w-100 btn-outline-dark" onclick="lightTheme()">Light theme</button>
+            </div>
+            <div class="col-md-2 px-1 mt-2 mt-md-0">
+              <button type="button" themed class="btn btn-light btn-sm w-100 btn-outline-dark" onclick="darkTheme()">Dark theme</button>
+            </div>
+            <!--  -->
+            <div class="col-md-2 px-1 mt-2 mt-md-0">
+              <button type="button" themed class="btn btn-light btn-sm w-100 btn-outline-dark" onclick="copyToClipboard()">Share</button>
+            </div>
+            <div class="col-md-4 px-1 mt-2 mt-md-0">
+              <p id='response_text' class="w-100"></p>
+            </div>
+        </div>
+
+        <div class="w-100">
+            <p>
+                <h1 class="h2 text-center fw-bold">
+                    How I Ruined F1's Schedule
+                </h1>
+            </p>
+
+            <p class="m-0">Index:</p>
+            <ul class="list-group list-group-flush w-50" id="index">
+                <li class="list-group-item"><a href="#required_data" themed-text>Gathering Required Data</a></li>
+                <li class="list-group-item"><a href="#initial_work" themed-text>Initial Model</a>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="#whyisntitworking" themed-text>"Why isn't this working?"</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+                <li class="list-group-item"><a href="#tsp" themed-text>Traveling Salesman Problem</a></li>
+                <li class="list-group-item"><a href="#results" themed-text>Results</a></li>
+            </ul>
+
+            <section id="introduction">
+                
+            </section>
+
+            <section>
+                <h2><a id="required_data">Gathering Required Data</a></h2>
+
+                <p>
+                    Before any kind of solving, I needed to find gather some data about the problem. First, every location F1 is going to visit in 2024. Thankfully, that list is published on the official Formula 1 website, and basically thousands of other sites. 
+                </p>
+
+                <p>
+                    Now, there maybe is an API that would take the name of two cities and return the distance between the two, but 1. I could not find one, and 2. I would likely get throttled before I could get the distances for the almost 300 different unique pairs of cities. Thankfully, taking inspiration from my research, I built a Google Maps scrapper. I am not going to reveal the method or the code here, I don't want Google to sue me, but essentially I was able to input the name of the location, and my script would return a set of geographical coordinates.
+                </p>
+                <p>
+                    Now, the next method requires us to assume the Earth is a perfect sphere, which it isn't, but this is engineering not physics, so close enough. Now, we convert this set of latitudes and longitudes to spherical coordinates using the formula:
+                    
+                    \[\begin{aligned}
+                    x &= r \cos\theta \sin\phi \\
+                    y &= r \sin\theta \sin\phi \\
+                    z &= r \cos\phi
+                    \end{aligned}\]
+                    , where \(\theta\) is our longitude, \(\phi = 90^\circ -\text{latitude}\), and \(r\) is the radius of the Earth. In our case, we will keep things in terms of unit vectors, and ommit \(r\) until the end of our calculation.
+                </p>
+                <p>
+                    Doing this for each pair of cities A and B, we get two vectors \(\vec{r_A}\) and \(\vec{r_B}\), representing their \(x, y, z\) position on the planet. Using the dot product formula, we get:
+
+                    \[\begin{aligned}
+                    \vec{r_A} \cdot \vec{r_B} =& \|\vec{r_A}\|\|\vec{r_B}\|\cos\alpha \\
+                    \cos\alpha &= \frac{\vec{r_A} \cdot \vec{r_B}}{\|\vec{r_A}\|\|\vec{r_B}\|} \\
+                    \end{aligned}\]
+                    , where \(\alpha\) is the angle between the two vectors. Now why do we care about the angle between the two vectors? Well, using the arc-length formula for a circle, we get:
+                    \[s = r \cdot \alpha\]
+                    , where in our case \(r = 6371 \, \textrm{km}\). Going back to our angle formula, since \(\vec{r_A}\) and \(\vec{r_B}\) are unit vectors, \(\|\vec{r_A}\| = \|\vec{r_B}\| = 1\), so:
+
+                    \[\alpha = \cos^{-1}(\vec{r_A} \cdot \vec{r_B})\]
+                    , and therefore
+                    \[\begin{aligned}
+                        d_{A, B} &= \cos^{-1}(\vec{r_A} \cdot \vec{r_B}) \cdot r_E \\
+                        &= \cos^{-1}(\vec{r_A} \cdot \vec{r_B}) \cdot 6,371
+                    \end{aligned}\]
+                </p>
+                <p>
+                    So finally, we can use this formula to find the distance in kilometers between each pair of cities.
+                </p>
+                <!-- <div  class="d-flex justify-content-center">
+                    <table class="table table-sm table-responsive table-bordered" style="max-width: 200px;">
+                        <tr><td>Sakhir</td></tr>
+                        <tr><td>Jeddah</td></tr>
+                        <tr><td>Melbourne</td></tr>
+                        <tr><td>Suzuka</td></tr>
+                        <tr><td>Shanghai</td></tr>
+                        <tr><td>Miami</td></tr>
+                        <tr><td>Imola</td></tr>
+                        <tr><td>Monaco</td></tr>
+                        <tr><td>Montreal</td></tr>
+                        <tr><td>Barcelona</td></tr>
+                        <tr><td>Spielberg</td></tr>
+                        <tr><td>Silverstone</td></tr>
+                        <tr><td>Budapest</td></tr>
+                        <tr><td>Spa</td></tr>
+                        <tr><td>Zandvoort</td></tr>
+                        <tr><td>Monza</td></tr>
+                        <tr><td>Baku</td></tr>
+                        <tr><td>Singapore</td></tr>
+                        <tr><td>Austin</td></tr>
+                        <tr><td>Mexico City</td></tr>
+                        <tr><td>Sao Paulo</td></tr>
+                        <tr><td>Las Vegas</td></tr>
+                        <tr><td>Lusail</td></tr>
+                        <tr><td>Yas Marina</td></tr>
+                    </table>
+                </div> -->
+                
+            </section>
+            
+            <section>
+                <h2><a id="initial_work">Initial Model</a></h2>
+
+                <p>
+                    My first attempt at a model consisted of a modified Min-Cost-Flow problem. At that point, I had already implemented it in various class projects and in my research and have gotten it to work consistently with very good performance, even with networks as big as the city of Chicago. So, with the help of NetworkX, I started building my graph by adding all the nodes (cities) and edges (links between cities). I also built an incidence matrix \(A\), where \(A_{i, j} = -1\) indicates that edge \(j\) is leaving city \(i\), and \(A_{i, j} = 1\) indicates that edge \(j\) is entering city \(i\).
+                </p>
+                <p class="mb-0">
+                    I then set up the familiar Min-Cost flow problem formulation, replacing the objective function with Max instead of Min:
+                    \[\textrm{max} \; \sum_{j \in E} d_j \cdot f_j \]
+
+                    \[\begin{align}
+                        \sum_{j \in E} A_{i, j} \cdot f_j &= b_i \quad \forall i \in V \\
+                        
+                        f_j &\in \{0, 1\} \; \forall j \in E \\ 
+                        b_i &= 0 \; \forall i \neq s,t \in V \\
+                        b_s &= -1 \\
+                        b_t &= 1
+                    \end{align}
+                    \]
+
+                    Here, \(E\) is the set of all edges, \(V\) is the set of all nodes/vertices, \(s\) is the starting node, \(t\) is the terminal node, \(d_j\) is the edge weight or the distance between the two points connected by edge \(j\), and \(f_j\) is the decision variable where if \(f_j = 1\) then we are traveling along edge \(j\).
+
+                    I then implemented the model in Python using GurobiPy. Since we don't know which combination of \(s, t\) gives us the largest total distance, we do a brute force search of every possibility (except when \(s = t\)). Instead of rebuilding the model between each possibility which is by far the most time-consuming task, we only manipulate the Right-Hand-Side of the relevant constraints between solves. This yields the following code:
+                    <pre >
+                        <code class="language-python px-3" style="display:block; width:100%; border-radius:10px; overflow-x:auto;">
+m = gp.Model()
+
+# DECLARING VARIABLES & CONSTANTS
+f = m.addMVar(shape = len(G.edges), lb=0, ub=1, vtype=gp.GRB.INTEGER)
+b = np.zeros(len(G.nodes))
+w = np.array([distance for distance in D.flatten() if distance])
+
+# ADDING CONSTRAINTS
+m.addConstr(A@f == b)
+
+m.setObjective(w@f, gp.GRB.MAXIMIZE)
+
+m.update()
+cst = m.getConstrs()
+
+sols = {}
+
+for s, city1 in enumerate(cities):
+    cst[s].rhs = -1
+    for t, city2 in enumerate(cities):
+        if s == t: continue
+
+        cst[t].rhs = 1
+        m.optimize()
+        cst[t].rhs = 0
+
+        sols[(city1, city2)] = m.ObjVal
+    cst[s].rhs = 0
+                        </code>
+                    </pre>
+                </p>
+                <p>
+                    I also added constraints to enforce that there could only be at most one edge flowing in and/or out of each node. Otherwise, it would be possible for the program to decide to go through the same node an infinite amount of times. We keep track of which edges enter/leave each node with the following code:
+                    <pre >
+                        <code class="language-python px-3" style="display:block; width:100%; border-radius:10px; overflow-x:auto;">
+s_indices = {city: [] for city in coords}
+f_indices = {city: [] for city in coords}
+
+for city in coords:
+    for i, (s, f) in enumerate(G.edges):
+        if s == city: s_indices[city].append(i)
+        if f == city: f_indices[city].append(i)
+                        </code>
+                    </pre>
+                    , where s_indices[i] indicate which edges leave node \(i\) and f_indices[i] indicate which edges enters node \(i\).
+
+                    The constraints then are:
+                    <pre >
+                        <code class="language-python px-3" style="display:block; width:100%; border-radius:10px; overflow-x:auto;">
+m.addConstrs(gp.quicksum(f[i] for i in f_indices[city] + s_indices[city]) >= 1 for city in coords)
+m.addConstrs(gp.quicksum(f[i] for i in s_indices[city]) <= 1 for city in coords)
+m.addConstrs(gp.quicksum(f[i] for i in f_indices[city]) <= 1 for city in coords)
+                        </code>
+                    </pre>
+                    , which enforces the fact that at most one edge can flow in and at most one can flow out of each node to prevent the solution from visiting the same node twice. This isn't a strict equality since the terminal and starting nodes only have one connecting edge. We also require that at least there must be at least one of either entering or leaving edge for each node, otherwise there would be nodes with no connections.
+                </p>
+                
+
+                <h3><a id="whyisntitworking">"Why isn't it working?"</a></h3>
+
+                <p>
+                    It turns out, this formulation has a big flaw: it doesn't prevent the existence of sub-loops, or loops that are disconnected from the main graph.
+                </p>
+                <div class="w-100 d-flex flex-column align-items-center">
+                    <img src="https://phabe.ch/wp-content/uploads/2021/09/image-5.png"/>
+                    <figcaption>
+                        Illustration of sub-loops. 
+                    </figcaption>
+                    <u>Credit: Fabian Leuthold @ <a href="https://phabe.ch/2021/09/19/tsp-subtour-elimination-by-miller-tucker-zemlin-constraint/">phabe.ch</a></u>
+                </div>
+                <p>
+                    Indeed, the constraints only enforce the following:
+                    <ol>
+                        <li>The starting node \(s\) has one edge flowing out</li>
+                        <li>The terminal node \(t\) has one edge flowing in</li>
+                        <li>All other nodes have one edge flowing in and one flowing out</li>
+                    </ol>
+
+                    Therefore, in an extreme scenario, it is theoretically possible to have a solution where the starting and terminal nodes are directly connected, and all the other nodes form one giant loop disconnected from either \(s\) or \(t\).
+                </p>
+                <p>
+                    I tried combating this by adding the constraint that if we got from city A to B, then we couldn't also go from city B to A with the following code:
+
+                    <pre >
+                        <code class="language-python px-3" style="display:block; width:100%; border-radius:10px; overflow-x:auto;">
+city_pairs = []
+banned_pairs = []
+for i1, city1 in enumerate(cities):
+    for i2, city2 in enumerate(cities):
+        if city1 == city2: continue
+        
+        if not (i2, i1) in city_pairs: 
+            city_pairs.append((i1, i2))
+            banned_pairs.append((list(G.edges).index((city1, city2)), list(G.edges).index((city2, city1))))
+
+... 
+
+# ADDED THE FOLLOWING CONSTRAINT TO THE MODEL
+
+m.addConstrs(f[i1] + f[i2] <= 1 for (i1, i2) in banned_pairs)
+                        </code>
+                    </pre>
+                </p>
+
+                <p>
+                    While this prevented sub-loops containing only two nodes, bigger loops could form. It was clear I needed a new formulation.
+                </p>
+            </section>
+
+            <section>
+                <h2><a id="tsp">Traveling Salesman Problem</a></h2>
+
+                <p>
+                    At this point, I was looking a new, more appropriate model. After some Googling, I found that a slightly modified version of the Traveling Salesman Problem (TSP) would be my best bet.
+                </p>
+            </section>
+            <pre >
+                <code class="language-python px-3" style="display:block; width:100%; border-radius:10px; overflow-x:auto;">
+m = gp.Model()
+
+x = m.addMVar(shape = (len(G.nodes), len(G.nodes)), vtype=gp.GRB.BINARY)
+u = m.addMVar(shape = len(G.nodes), lb=0, ub=n+1, vtype=gp.GRB.INTEGER)
+
+n = len(cities)
+
+# INTEGRITY
+m.addConstrs(gp.quicksum(x[i][j] for i in range(len(cities)) if i != j) == 1 for j in range(n))
+m.addConstrs(gp.quicksum(x[j][i] for i in range(len(cities)) if i != j) == 1 for j in range(n))
+
+# NO LOOPS
+m.addConstrs(u[i] <= n for i in range(1, n))
+m.addConstrs(1 <= u[i] for i in range(1, n))
+m.addConstrs(u[i] - u[j] <= (n-1)*(1-x[i][j])-1 for i in range(1, n) for j in range(1, n))
+m.addConstr(u[0] == 1)
+
+m.setObjective(gp.quicksum(gp.quicksum(D[i][j]*x[i][j] for i in range(len(cities))) for j in range(len(cities))), gp.GRB.MAXIMIZE)
+
+m.optimize()
+                </code>
+            </pre>
+
+            <section>
+                <h2><a id="results">Results</a></h2>
+                <p>
+                    Finally, here are the results. For those whose skipped all the way from the top of the page, Hi! Don't worry I'm not mad. Anyways, here is a table with the locations in order, and the distance to the next destination:
+                </p>
+
+                <div class="d-flex justify-content-center">
+                    <table class="table table-sm table-responsive" style="width: min(100%, 600px);">
+                    <thead>
+                        <tr>
+                            <th>Location</th>
+                            <th>Distance to next location</th>
+                        </tr>
+                    </thead>
+                        <tr><td>Imola</td><td>9589 km</td></tr>
+                        <tr><td>Las Vegas</td><td>9494 km</td></tr>
+                        <tr><td>Spielberg</td><td>9075 km</td></tr>
+                        <tr><td>Austin</td><td>9317 km</td></tr>
+                        <tr><td>Budapest</td><td>10273 km</td></tr>
+                        <tr><td>Sao Paulo</td><td>18572 km</td></tr>
+                        <tr><td>Shanghai</td><td>9806 km</td></tr>
+                        <tr><td>Barcelona</td><td>10318 km</td></tr>
+                        <tr><td>Suzuka</td><td>9869 km</td></tr>
+                        <tr><td>Monaco</td><td>10421 km</td></tr>
+                        <tr><td>Singapore</td><td>10258 km</td></tr>
+                        <tr><td>Monza</td><td>16301 km</td></tr>
+                        <tr><td>Melbourne</td><td>16526 km</td></tr>
+                        <tr><td>Spa</td><td>3545 km</td></tr>
+                        <tr><td>Baku</td><td>4030 km</td></tr>
+                        <tr><td>Silverstone</td><td>5561 km</td></tr>
+                        <tr><td>Yas Marina</td><td>12613 km</td></tr>
+                        <tr><td>Miami</td><td>12318 km</td></tr>
+                        <tr><td>Lusail</td><td>14109 km</td></tr>
+                        <tr><td>Mexico City</td><td>13995 km</td></tr>
+                        <tr><td>Sakhir</td><td>10266 km</td></tr>
+                        <tr><td>Montreal</td><td>9961 km</td></tr>
+                        <tr><td>Jeddah</td><td>4537 km</td></tr>
+                        <tr><td>Zandvoort</td><td>NA</td></tr>
+                    </table> 
+                </div>
+                
+                <p>
+                    Here is an interactive globe with lines connecting each destination. As you can see, we end up flying all across the planet multiple times, and end up covering a distance of 240,754km/≈150,000mi, or around 6 times the circumference of the planet.
+                </p>
+
+                <div class="w-100 d-flex justify-content-center">
+                    <div id="graph-container" class="w-100 d-flex justify-content-center overflow-hidden">  
+                        
+                    </div> 
+                </div>
+
+                <script>fetch_globe()</script>
+            </section>
+            
+          
+          
+          
+        </div>
+    </div>
+
+    <script>
+        window.onresize = function(event){
+          Plotly.Plots.resize('graph-container')
+        }
+    </script>
+</body>
